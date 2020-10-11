@@ -1,7 +1,7 @@
 <!-- base.html 가져오기-->
 {% load static %}
 {% block title %}
-{{ category }}
+
 {% endblock title %}
 
 
@@ -27,35 +27,40 @@
 <!-- <div class="content">
     <div class="product_title"> -->
 <h2>
-    <span>{{ category }}</span>
+    
+    <h2> {{category}}</h2>
+    {% for categories in categories %}
+    <button type="button" class="btn btn-warning"><a href="{% url 'shopping' categories.id %}">{{categories}}</a></button>
+    <br>
+    {% endfor %}
+    </div>
 </h2>
 
 <!-- 상품 내역 -->
 
-    <div class="container">
-        <div class="card-columns">
-            {% for product in products %}
-            <div class="card mb-4 shadow-sm">
-                <!-- image-->
-                {% if product.image %}
-                <img src="{{ product.image.url }}" width="20%" height="30%" class="card-img-top" alt="Product_Image">
-                {% else %}
-                <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                    xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"
-                    aria-label="Placeholder: Thumbnail">
-                    <title>Category</title>
-                    <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef" dy=".3em">
-                        Product</text>
-                </svg>
-                {% endif %}
-                <div class="card-body">
-                    <h4 class="card-title"> {{  product.name  }}</h4>
-                    <h5 class="card-title"> {{  product.price  }}원</h5>
-                </div>
+<div class="container">
+    <div class="card-columns">
+        {% for post in posts %}
+        <div class="card mb-4 shadow-sm">
+            <!-- image-->
+            {% if post.image %}
+            <img src="{{ post.image.url }}" width="20%" height="30%" class="card-img-top" alt="post_Image">
+            {% else %}
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg"
+                preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
+                <title>Category</title>
+                <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef" dy=".3em">
+                    post</text>
+            </svg>
+            {% endif %}
+            <div class="card-body">
+                <h4 class="card-title"> {{  post.name  }}</h4>
+                <h5 class="card-title"> {{  post.price  }}원</h5>
             </div>
-            {% endfor %}
         </div>
+        {% endfor %}
     </div>
+</div>
 
 
 
@@ -63,8 +68,8 @@
 <div class="container">
     {# first Previous #}
     {% if posts.has_previous %}
-    <button type="button" class="btn btn-warning"><a href="?page=1"> First </a></button>
-    <button type="button" class="btn btn-warning"><a href="?page={{posts.previous_page_number}}">Previous
+    <button type="button" class="btn btn-light"><a href="?page=1"> First </a></button>
+    <button type="button" class="btn btn-light"><a href="?page={{posts.previous_page_number}}">Previous
         </a></button>
     {% endif %}
     {# 3 of 4 #}
@@ -73,11 +78,11 @@
     <span>{{posts.paginator.num_pages}}</span>
     {# Next Last #}
     {% if posts.has_next %}
-    <button type="button" class="btn btn-warning"><a href="?page={{posts.next_page_number}}"> Next </a></button>
-    <button type="button" class="btn btn-warning"><a href="?page={{posts.paginator.num_pages}}">Last</a></button>
+    <button type="button" class="btn btn-light"><a href="?page={{posts.next_page_number}}"> Next </a></button>
+    <button type="button" class="btn btn-light"><a href="?page={{posts.paginator.num_pages}}">Last</a></button>
     {% endif %}
-<br>
-<br>
+    <br>
+    <br>
 
 </div>
 
