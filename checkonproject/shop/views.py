@@ -1,15 +1,12 @@
-<<<<<<< HEAD
 from django.shortcuts import render
 from .models import Product, Category
 from django.core.paginator import Paginator
-=======
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Category, Product, Cart, Order
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.models import User
 from django.contrib import messages
->>>>>>> cart
 
 # Create your views here.
 
@@ -25,10 +22,8 @@ def show_category(request, category_id):
     page = request.GET.get('page')
     posts = paginator.get_page(page)
     
-<<<<<<< HEAD
     
     return render(request, 'shopping.html', {'lank_products': lank_products, 'products': products, 'category': category, 'categories': categories ,'posts' : posts})
-=======
     # try:
     #     products = paginator.page(page)
     # except PageNotAnInteger:
@@ -114,5 +109,4 @@ def cart_or_buy(request, product_id):
                 'product': product,
                 'categories': categories,
             })
->>>>>>> cart
 
