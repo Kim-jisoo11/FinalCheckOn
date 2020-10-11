@@ -1,0 +1,58 @@
+<!-- base.html 가져오기-->
+{% load static %}
+{% block title %}
+{{ category }}
+{% endblock title %}
+
+
+{% block content %}
+
+<link rel="stylesheet" type='text/css' href="{% static 'style.css' %}">
+<div class="content">
+    <div class="product_title">
+        <h2>
+            <span>{{ category }}</span>
+        </h2>
+
+        <!-- 상품 내역 -->
+        <div class="card-columns">
+            {% for product in products %}
+            <div class="card mb-4 shadow-sm">
+                <!-- image-->
+                {% if product.image %}
+                <img src="{{ product.image.url }}" width="200px" height="300px" class="card-img-top"
+                    alt="Product_Image">
+                {% else %}
+                <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
+                    xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"
+                    aria-label="Placeholder: Thumbnail">
+                    <title>Category</title>
+                    <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef" dy=".3em">
+                        Product</text>
+                </svg>
+                {% endif %}
+                <div class="card-body">
+                    <h4 class="card-title"> {{  product.name  }}</h4>
+                    <h6 class="card-title"> {{  product.price  }}</h6>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- pagenation nav -->
+        <div class="board_paging">
+            <ol>
+                {% if products.has_previous %}
+                <li class="paging_pre">
+                    <a href="{% url 'shopping' %}?page={{ products.previous_page_number }}">
+                        <</a> </li> {% endif %} <li><a href="#">{{ products.number }}</a></li>
+
+                {% if products.has_next %}
+                <li class="paging_next">
+                    <a href="{% url 'shopping' %}?page={{ products.next_page_number }}">></a>
+                </li>
+                {% endif %}
+            </ol>
+        </div>
+    </div>
+    {% endblock content %}
