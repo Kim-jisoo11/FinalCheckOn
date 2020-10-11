@@ -28,10 +28,10 @@ def show_category(request, category_id):
 
     # context = {'lank_products': lank_products, 'products': products, 'category': category, 'categories': categories, 'posts' : posts}
     return render(request, 'shopping.html', {'lank_products': lank_products, 'products': products, 'posts' : posts, 'category': category, 'categories': categories })
-
-def cart(request, pk):
+@login_required
+def cart(request, user_id):
     categories = Category.objects.all()
-    user = User.objects.get(pk=pk)
+    user = User.objects.get(pk=user_id)
     cart = Cart.objects.filter(user=user)
     paginator = Paginator(cart, 10)
     page = request.GET.get('page')
@@ -44,14 +44,14 @@ def cart(request, pk):
     context = {'user': user, 'cart': cart, 'categories': categories}
     return render(request, 'cart.html', context)
 
-def delete_cart(request, pk):
+def delete_cart(request, product_id):
     user = request.user
     cart = Cart.objects.filter(user=user)
     quantity = 0
 
     if request.method == 'POST':
         pk = int(request.POST.get('product'))
-        product = Product.objects.get(pk=pk)
+        product = Product.objects.get(pk=product_id)
         for i in cart:
             if i.products == product :
                 quantity =  i.quantity
@@ -69,7 +69,7 @@ def cart_or_buy(request, product_id):
     user = request.user
     categories = Category.objects.all()
     category = product.category
-    initial = {'name': product.name, 'amount': product.price, 'quantity': quantity}
+    initial = {'name': product.name, 'amount': product.price, 'quantity': quantity, 'category':product.category}
     cart = Cart.objects.filter(user=user)
     if request.method == 'POST':
         if 'add_cart' in request.POST:
@@ -80,7 +80,7 @@ def cart_or_buy(request, product_id):
             #         messages.success(request,'장바구니 등록 완료')
             #         return redirect('shop:cart', user.pk)
 
-            Cart.objects.create(user=user, products=product, quantity=quantity)
+            Cart.objects.create(user=user, products=product, quantity=quantity, category=category)
             messages.success(request, '장바구니 등록 완료')
             return redirect('shopping', category.pk)
 
