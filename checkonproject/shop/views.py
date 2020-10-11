@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Product, Category
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.paginator import Paginator
 
 # Create your views here.
 
@@ -12,17 +12,10 @@ def show_category(request, category_id):
     category = Category.objects.get(pk=category_id)
     products = Product.objects.filter(category=category).order_by('pub_date')
     lank_products = Product.objects.filter(category=category).order_by('-hit')[:4]
-    paginator = Paginator(products, 5)
+    paginator = Paginator(products, 12)
     page = request.GET.get('page')
     posts = paginator.get_page(page)
     
-    # try:
-    #     products = paginator.page(page)
-    # except PageNotAnInteger:
-    #     products = paginator.page(1)
-    # except EmptyPage:
-    #     products = paginator.page(paginator.num_pages)
-
-    # context = {'lank_products': lank_products, 'products': products, 'category': category, 'categories': categories, 'posts' : posts}
-    return render(request, 'shopping.html', {'lank_products': lank_products, 'products': products, 'posts' : posts, 'category': category, 'categories': categories })
+    
+    return render(request, 'shopping.html', {'lank_products': lank_products, 'products': products, 'category': category, 'categories': categories ,'posts' : posts})
 
