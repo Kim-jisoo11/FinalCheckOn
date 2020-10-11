@@ -34,6 +34,17 @@
                 <div class="card-body">
                     <h4 class="card-title"> {{  product.name  }}</h4>
                     <h6 class="card-title"> {{  product.price  }}</h6>
+                    <form action="{% url 'cart_or_buy' product.pk %}", method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% if user.is_authenticated %}
+                        <h4>수량</h4>
+                        {% if product.quantity > 0 %}
+                        <input type="number" name="quantity" min="0" max="10"/>
+                        <button type="submit" name="add_cart" value="add_cart">+ ADD SHOPPING CART</button>
+                        <button type="submit" name="buy" value="buy">BUY IT NOW</button>
+                        {% endif %}
+                    {% endif %}
+                    </form>
                 </div>
             </div>
             {% endfor %}
