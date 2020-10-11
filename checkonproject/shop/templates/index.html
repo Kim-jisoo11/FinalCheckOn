@@ -1,5 +1,10 @@
 <h1>Hello 2DX2</h1>
 
+{% for product in products.all %}
+    <img src="{{ product.image.url }}">
+    <h4> {{product.name}} </h4>
+{% endfor %}
+
 <body>
         {% if user.is_authenticated %}
             <li class="nav-item">
