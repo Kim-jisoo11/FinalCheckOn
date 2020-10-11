@@ -18,8 +18,13 @@ from django.urls import path
 from shop import views
 from django.conf import settings
 from django.conf.urls.static import static
+import accounts.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
+    path('login/',accounts.views.login, name = 'login'),
+    path('logout/',accounts.views.logout, name = 'logout'),
+    path('signup/',accounts.views.signup, name = 'signup'),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+
