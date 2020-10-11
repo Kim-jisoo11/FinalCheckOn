@@ -14,12 +14,15 @@ def show_category(request, category_id):
     lank_products = Product.objects.filter(category=category).order_by('-hit')[:4]
     paginator = Paginator(products, 5)
     page = request.GET.get('page')
-    try:
-        products = paginator.page(page)
-    except PageNotAnInteger:
-        products = paginator.page(1)
-    except EmptyPage:
-        products = paginator.page(paginator.num_pages)
-    context = {'lank_products': lank_products, 'products': products, 'category': category, 'categories': categories}
-    return render(request, 'shopping.html', context)
+    posts = paginator.get_page(page)
+    
+    # try:
+    #     products = paginator.page(page)
+    # except PageNotAnInteger:
+    #     products = paginator.page(1)
+    # except EmptyPage:
+    #     products = paginator.page(paginator.num_pages)
+
+    # context = {'lank_products': lank_products, 'products': products, 'category': category, 'categories': categories, 'posts' : posts}
+    return render(request, 'shopping.html', {'lank_products': lank_products, 'products': products, 'posts' : posts, 'category': category, 'categories': categories })
 
