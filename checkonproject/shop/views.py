@@ -30,14 +30,18 @@ def cart(request, user_id):
     categories = Category.objects.all()
     user = User.objects.get(pk=user_id)
     cart = Cart.objects.filter(user=user)
+    print(user)
     paginator = Paginator(cart, 10)
     page = request.GET.get('page')
     posts = paginator.get_page(page)
     total_prices = 0
-    for i in Cart.objects.all():
+    for i in Cart.objects.filter(user=user):
+        print(i)
         i.products.price = i.products.price * i.quantity
         total_prices = total_prices + i.products.price    
-    context = {'user': user, 'cart': cart, 'categories': categories, 'posts' : posts, 'totalAmount' : total_prices}
+    cart.totalAmount = total_prices
+    print(cart.totalAmount)
+    context = {'user': user, 'cart': cart, 'categories': categories, 'posts' : posts}
     return render(request, 'cart.html', context)
 
 def delete_cart(request, product_id):

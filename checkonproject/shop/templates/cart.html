@@ -53,10 +53,12 @@
                                 {% widthratio product.products.price 1 product.quantity %}
                                 <!-- {{ product.products.price }}  -->
                             </td>
+                            
                         </tr>
                     {% endfor %}
-                    <br>
-                    {{totalAmount}}
+
+                    {{cart.totalAmount}}
+                    
                     </tbody>
                 </table>
 
