@@ -22,7 +22,6 @@ def show_category(request, category_id):
     page = request.GET.get('page')
     posts = paginator.get_page(page)
     
-    
     return render(request, 'shopping.html', {'lank_products': lank_products, 'products': products, 'category': category, 'categories': categories ,'posts' : posts})
     # try:
     #     products = paginator.page(page)
@@ -31,9 +30,6 @@ def show_category(request, category_id):
     # except EmptyPage:
     #     products = paginator.page(paginator.num_pages)
 
-    # context = {'lank_products': lank_products, 'products': products, 'category': category, 'categories': categories, 'posts' : posts}
-    return render(request, 'shopping.html', {'lank_products': lank_products, 'products': products, 'posts' : posts, 'category': category, 'categories': categories })
-@login_required
 def cart(request, user_id):
     categories = Category.objects.all()
     user = User.objects.get(pk=user_id)
