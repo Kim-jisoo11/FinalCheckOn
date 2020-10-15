@@ -89,7 +89,7 @@ def cart_or_buy(request, product_id):
                 order.quantity = quantity
                 order.products = product
                 order.save()
-                return redirect('shop:order_list', user.pk)
+                return redirect('mypage', user.pk)
 
             else:
                 form = OrderForm(initial=initial)
