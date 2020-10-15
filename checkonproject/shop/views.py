@@ -61,7 +61,7 @@ def delete_cart(request, product_id):
             product = Product.objects.filter(pk=pk)
             cart = Cart.objects.filter(user=user, products__in=product)
             cart.delete()
-            return redirect('shop:cart', user.pk)
+            return redirect('cart', user.pk)
 
 @login_required
 def cart_or_buy(request, product_id):
