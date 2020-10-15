@@ -61,9 +61,14 @@ def delete_cart(request, product_id):
             cart.delete()
             return redirect('cart', user.pk)
 
+def create_shop(request):
+    return render(request, 'create_shop.html')
+
+
 @login_required
 def cart_or_buy(request, product_id):
-    quantity = int(request.POST.get('quantity'))
+    quantity = request.POST.get('quantity')
+    quantity = int(quantity)
     product = Product.objects.get(pk=product_id)
     user = request.user
     categories = Category.objects.all()
@@ -101,4 +106,8 @@ def cart_or_buy(request, product_id):
                 'product': product,
                 'categories': categories,
             })
+
+
+
+
 
