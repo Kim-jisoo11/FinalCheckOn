@@ -8,6 +8,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.db.models import F
+from django.utils import timezone
 # from django.db.models import Avg, Max, Min, Sum, Count
 
 # Create your views here.
@@ -82,23 +83,23 @@ def cart_or_buy(request, product_id):
             return redirect('shopping', category.pk)
 
         elif 'buy' in request.POST:
-            form = OrderForm(request.POST, initial=initial)
-            if form.is_valid():
-                order = form.save(commit=False)
-                order.user = user
-                order.quantity = quantity
-                order.products = product
-                order.save()
-                return redirect('mypage', user.pk)
+            cart = Cart.objects.all()
+            order = Order.objects.all()
+            order.user = cart.user
+            order.products = cart.product
+            order.quantity = cart.quantity
+            order.order_date = timezone.datetime.now()
+            order.save()
+            return redirect('mypage', user.pk)
 
-            else:
-                form = OrderForm(initial=initial)
+def mypage(request, user_id):
+    categories = Category.objects.all()
+    user = User.objects.get(pk=user_id)
+    cart = Cart.objects.filter(user=user)
+    ordered = Order.objects.all()
+    myordered.products = cart.products
 
-            return render(request, 'shop/order_pay.html', {
-                'form': form,
-                'quantity': quantity,
-                'user': user,
-                'product': product,
-                'categories': categories,
-            })
+
+
+    return render(request, 'mypage.html', {'myordered':myordered, 'categories':categories, 'user':user, 'cart':cart})
 

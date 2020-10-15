@@ -7,6 +7,30 @@
 
 {% block content %}
     {% load static %}
+    hello
+    <tbody>
+        <!-- 리스트 안에 담겨서 나오기 때문에 for 문을 써서 출력 -->
+        {% for myOrdered in myordered %}
+            <tr>
+                <td class="thumb">
+                    <img src="{{ myOrdered.products.image.url }}" width="50px" height="50px" class="card-img-top" alt="product_Image">
+                </td>
+                <td class="product">
+                    {{ myOrdered.products.name }}
+                </td>
+                <td class="quantity">
+                    {{ myOrdered.quantity }}
+                </td>
+                <td>
+                    {% widthratio myOrdered.products.price 1 product.quantity %}
+                    <!-- {{ product.products.price }}  -->
+                </td>
+                
+            </tr>
+        {% endfor %}
 
+        {{cart.totalAmount}}
+        
+        </tbody>
 
 {% endblock content %}
