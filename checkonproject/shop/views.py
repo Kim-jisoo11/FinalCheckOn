@@ -52,11 +52,10 @@ def delete_cart(request, product_id):
 
     if request.method == 'POST':
         pk = int(request.POST.get('product'))
-        product = Product.objects.get(pk=product_id)
+        product = Product.objects.get(pk=pk)
         for i in cart:
             if i.products == product :
                 quantity =  i.quantity
-
         if quantity > 0 :
             product = Product.objects.filter(pk=pk)
             cart = Cart.objects.filter(user=user, products__in=product)
