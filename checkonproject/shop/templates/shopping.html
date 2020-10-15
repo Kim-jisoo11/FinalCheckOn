@@ -65,35 +65,41 @@
                     <h4>수량</h4>
                     {% if post.quantity > 0 %}
                     <input type="number" name="quantity" min="0" max="10" />
-                    <!-- modal 구동 버튼 (trigger) -->
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#my100sizeCenterModal">
-                        주문할겨?</button>
+                    <button type="submit" name="add_cart" value="add_cart">주문할겨?</button>
 
-                    <!-- Modal -->
-                    <div class="modal modal-center fade" id="my100sizeCenterModal" tabindex="-1" role="dialog"
-                        aria-labelledby="my100sizeCenterModalLabel">
-                        <div class="modal-dialog modal-100size modal-center" role="document">
-                            <div class="modal-content modal-100size">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                            aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title" id="myModalLabel">Modal 제목</h4>
-                                </div>
-                                <div class="modal-body">
-                                    Modal 내용
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="submit" class="btn btn-secondary" name="add_cart" value="add_cart">계속쇼핑?</button>
-                                    <button type="submit" class="btn btn-primary" name="add_cart" value="add_cart"><a href = "{% url 'cart' user.pk%}">장바구니 갈거임</a></button>
+                    <!-- modal 구동 버튼 (trigger) <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"> Modal 띄우기 </button>
+
+
+
+                        Modal
+                        <div class="modal modal-center fade" id="my100sizeCenterModal" tabindex="-1" role="dialog"
+                            aria-labelledby="my100sizeCenterModalLabel">
+                            <div class="modal-dialog modal-100size modal-center" role="document">
+                                <div class="modal-content modal-100size">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                                aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabel">Modal 제목</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        Modal 내용
+                                    </div>
+                                    
+                                        <li class="cart_or_buy">
+
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">계속쇼핑?</button>
+                                            <button type="button" class="btn btn-default" ><a href="{% url 'cart' user.pk %}">장바구니 갈거임</a></button>
+                                        </li>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-
-
-            
+                        </div> -->
                     {% endif %}
                     {% endif %}
+
+
+
+
                 </form>
 
             </div>

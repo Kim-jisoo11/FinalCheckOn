@@ -30,7 +30,6 @@ def cart(request, user_id):
     categories = Category.objects.all()
     user = User.objects.get(pk=user_id)
     cart = Cart.objects.filter(user=user)
-    print(user)
     paginator = Paginator(cart, 10)
     page = request.GET.get('page')
     posts = paginator.get_page(page)
@@ -61,14 +60,11 @@ def delete_cart(request, product_id):
             cart.delete()
             return redirect('cart', user.pk)
 
-def create_shop(request):
-    return render(request, 'create_shop.html')
 
 
 @login_required
 def cart_or_buy(request, product_id):
-    quantity = request.POST.get('quantity')
-    quantity = int(quantity)
+    quantity = int(request.POST.get('quantity'))
     product = Product.objects.get(pk=product_id)
     user = request.user
     categories = Category.objects.all()
@@ -85,28 +81,7 @@ def cart_or_buy(request, product_id):
                     return redirect('shopping', category.pk)
             Cart.objects.create(user=user, products=product, quantity=quantity, category=category)            
             return redirect('shopping', category.pk)
-
-        elif 'buy' in request.POST:
-            form = OrderForm(request.POST, initial=initial)
-            if form.is_valid():
-                order = form.save(commit=False)
-                order.user = user
-                order.quantity = quantity
-                order.products = product
-                order.save()
-                return redirect('shop:order_list', user.pk)
-
-            else:
-                form = OrderForm(initial=initial)
-
-            return render(request, 'shop/order_pay.html', {
-                'form': form,
-                'quantity': quantity,
-                'user': user,
-                'product': product,
-                'categories': categories,
-            })
-
+        
 
 
 
