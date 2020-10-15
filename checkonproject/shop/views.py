@@ -7,6 +7,8 @@ from .models import Category, Product, Cart, Order
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.db.models import F
+# from django.db.models import Avg, Max, Min, Sum, Count
 
 # Create your views here.
 
@@ -22,13 +24,7 @@ def show_category(request, category_id):
     page = request.GET.get('page')
     posts = paginator.get_page(page)
     
-    return render(request, 'shopping.html', {'lank_products': lank_products, 'products': products, 'category': category, 'categories': categories ,'posts' : posts})
-    # try:
-    #     products = paginator.page(page)
-    # except PageNotAnInteger:
-    #     products = paginator.page(1)
-    # except EmptyPage:
-    #     products = paginator.page(paginator.num_pages)
+    return render(request, 'shopping.html', {'category': category, 'categories': categories ,'posts' : posts})
 
 def cart(request, user_id):
     categories = Category.objects.all()
@@ -36,13 +32,12 @@ def cart(request, user_id):
     cart = Cart.objects.filter(user=user)
     paginator = Paginator(cart, 10)
     page = request.GET.get('page')
-    try:
-        cart = paginator.page(page)
-    except PageNotAnInteger:
-        cart = paginator.page(1)
-    except EmptyPage:
-        cart = paginator.page(paginator.num_pages)
-    context = {'user': user, 'cart': cart, 'categories': categories}
+    posts = paginator.get_page(page)
+    total_prices = 0
+    for i in Cart.objects.all():
+        i.products.price = i.products.price * i.quantity
+        total_prices = total_prices + i.products.price    
+    context = {'user': user, 'cart': cart, 'categories': categories, 'posts' : posts, 'totalAmount' : total_prices}
     return render(request, 'cart.html', context)
 
 def delete_cart(request, product_id):
@@ -73,15 +68,13 @@ def cart_or_buy(request, product_id):
     cart = Cart.objects.filter(user=user)
     if request.method == 'POST':
         if 'add_cart' in request.POST:
-            # for i in cart :
-            #     if i.products == product:
-            #         product = Product.objects.filter(pk=pk)
-            #         Cart.objects.filter(user=user, products__in=product).update(quantity=F('quantity') + quantity)
-            #         messages.success(request,'장바구니 등록 완료')
-            #         return redirect('shop:cart', user.pk)
-
-            Cart.objects.create(user=user, products=product, quantity=quantity, category=category)
-            messages.success(request, '장바구니 등록 완료')
+            for i in cart :
+                if i.products == product:
+                    product = Product.objects.filter(pk=product_id)
+                    Cart.objects.filter(user=user, products__in=product).update(quantity=F('quantity') + quantity)
+                    messages.success(request,'장바구니 등록 완료')
+                    return redirect('shopping', category.pk)
+            Cart.objects.create(user=user, products=product, quantity=quantity, category=category)            
             return redirect('shopping', category.pk)
 
         elif 'buy' in request.POST:

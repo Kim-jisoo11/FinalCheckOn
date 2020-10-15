@@ -41,7 +41,7 @@
                                 <input type="radio" id="product_{{ product.id }}" name="product" value="{{ product.products.id }}">
                             </td>
                             <td class="thumb">
-                                
+                                <img src="{{ product.products.image.url }}" width="50px" height="50px" class="card-img-top" alt="product_Image">
                             </td>
                             <td class="product">
                                 {{ product.products.name }}
@@ -50,10 +50,13 @@
                                 {{ product.quantity }}
                             </td>
                             <td>
-                                {{ product.products.price }}
+                                {% widthratio product.products.price 1 product.quantity %}
+                                <!-- {{ product.products.price }}  -->
                             </td>
                         </tr>
                     {% endfor %}
+                    <br>
+                    {{totalAmount}}
                     </tbody>
                 </table>
 
