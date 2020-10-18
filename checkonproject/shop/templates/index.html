@@ -15,7 +15,7 @@
               </form>
             </li>
 
-            <a href="{% url 'cart' user.pk %}">장바구니</a>
+            <a href="{% url 'cart' user.pk %}">주문내역</a>
           {% else %}
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'signup' %}">회원가입</a>
@@ -23,6 +23,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'login' %}">로그인</a>
             </li>
+            
           {% endif %}
     
 </body>
