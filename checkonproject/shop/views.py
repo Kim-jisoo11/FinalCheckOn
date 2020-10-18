@@ -41,7 +41,7 @@ def cart(request, user_id):
         total_prices = total_prices + i.products.price    
     cart.totalAmount = total_prices
     print(cart.totalAmount)
-    context = {'user': user, 'cart': cart, 'categories': categories, 'posts' : posts}
+    
 
     # 카테고리별 산 상품 종류 합계
     isBought = {}
@@ -67,7 +67,55 @@ def cart(request, user_id):
     for key, value in countProduct.items():
         print(key, " : ", value)
 
+    context = {'user': user, 'cart': cart, 'categories': categories, 'posts' : posts, 'countProduct' : countProduct}
+
     return render(request, 'cart.html', context)
+
+def mypage(request, user_id):
+    categories = Category.objects.all()
+    user = User.objects.get(pk=user_id)
+    cart = Cart.objects.filter(user=user)
+    print(user)
+    paginator = Paginator(cart, 10)
+    page = request.GET.get('page')
+    posts = paginator.get_page(page)
+    total_prices = 0
+    for i in cart:
+        print(i)
+        i.products.price = i.products.price * i.quantity
+        total_prices = total_prices + i.products.price    
+    cart.totalAmount = total_prices
+    print(cart.totalAmount)
+    
+
+    # 카테고리별 산 상품 종류 합계
+    isBought = {}
+    print(type(isBought))
+    for i in cart:
+        if i.category_id in isBought:
+            sum = isBought.get(i.category_id) + 1
+            isBought[i.category_id] = sum
+        else:
+            isBought[i.category_id] = 1
+
+    # 구매 제품 종류 합계
+    totalSum=0
+    for key, value in isBought.items():
+        totalSum = totalSum + value
+        print(key, " : ", value)
+
+    # 카테고리 통계
+    countProduct = {}
+    for i in cart:
+        countProduct[i.category_id] = isBought.get(i.category_id) / totalSum * 100
+
+    for key, value in countProduct.items():
+        print(key, " : ", value)
+
+    context = {'user': user, 'cart': cart, 'categories': categories, 'posts' : posts, 'countProduct' : countProduct}
+
+    return render(request, 'mypage.html', context)
+
 
 def delete_cart(request, product_id):
     user = request.user
