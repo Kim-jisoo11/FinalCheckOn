@@ -1,4 +1,6 @@
 <!-- base.html 가져오기-->
+
+{% extends 'base.html' %}
 {% load static %}
 {% block title %}
 
@@ -6,6 +8,10 @@
 
 
 {% block content %}
+
+
+
+
 <!-- CSS only -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -25,12 +31,23 @@
 
 
 <!-- <div class="content">
-    <div class="product_title"> -->
+    <div class="product_title"> --><!-- Image and text -->
+
+
+<!-- <nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="{% url 'index' %}">
+      <img src="/media/images/logo2.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+      CheckOn
+    </a>
+</nav> -->
+
+
 <h2>
-    
+
     <h2> {{category}}</h2>
     {% for categories in categories %}
-    <button type="button" class="btn btn-warning"><a href="{% url 'shopping' categories.id %}">{{categories}}</a></button>
+    <button type="button" class="btn btn-warning"><a
+            href="{% url 'shopping' categories.id %}">{{categories}}</a></button>
     <br>
     {% endfor %}
     </div>
@@ -44,29 +61,63 @@
         <div class="card mb-4 shadow-sm">
             <!-- image-->
             {% if post.image %}
-                <img src="{{ post.image.url }}" width="20%" height="30%" class="card-img-top" alt="post_Image">
+            <img src="{{ post.image.url }}" width="20%" height="30%" class="card-img-top" alt="post_Image">
             {% else %}
-                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg"
-                    preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
-                    <title>Category</title>
-                    <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef" dy=".3em">
-                        post</text>
-                </svg>
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg"
+                preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
+                <title>Category</title>
+                <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef" dy=".3em">
+                    post</text>
+            </svg>
             {% endif %}
 
             <div class="card-body">
                 <h4 class="card-title"> {{  post.name  }}</h4>
                 <h5 class="card-title"> {{  post.price  }}원</h5>
+                
 
-                <form action="{% url 'cart_or_buy' post.id %}", method="POST" enctype="multipart/form-data">
+                <form action="{% url 'cart_or_buy' post.id %}" , method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                     {% if user.is_authenticated %}
-                        <h4>수량</h4>
-                        {% if post.quantity > 0 %}
-                        <input type="number" name="quantity" min="0" max="10"/>
-                        <button type="submit" name="add_cart" value="add_cart">+ ADD SHOPPING CART</button>
-                        {% endif %}
+                    <h4>수량</h4>
+                    {% if post.quantity > 0 %}
+                    <input type="number" name="quantity" min="0" max="10" />
+                    <button type="submit" name="add_cart" value="add_cart">주문하기</button>
+                    
+
+                    <!-- modal 구동 버튼 (trigger) <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"> Modal 띄우기 </button>
+
+
+
+                        Modal
+                        <div class="modal modal-center fade" id="my100sizeCenterModal" tabindex="-1" role="dialog"
+                            aria-labelledby="my100sizeCenterModalLabel">
+                            <div class="modal-dialog modal-100size modal-center" role="document">
+                                <div class="modal-content modal-100size">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                                aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabel">Modal 제목</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        Modal 내용
+                                    </div>
+                                    
+                                        <li class="cart_or_buy">
+
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">계속쇼핑?</button>
+                                            <button type="button" class="btn btn-default" ><a href="{% url 'cart' user.pk %}">장바구니 갈거임</a></button>
+                                        </li>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
                     {% endif %}
+                    {% endif %}
+
+
+
+
                 </form>
 
             </div>
@@ -101,3 +152,17 @@
 
 
 {% endblock content %}
+
+
+
+
+<!-- 
+
+<button type="submit" onclick="alertConfirm()">신청하기</button>
+<script>
+    
+    function alertConfirm() {
+      var alertToVisiter = alert('신청되었습니다.');
+      event.preventDefault();
+    }
+</script> -->
