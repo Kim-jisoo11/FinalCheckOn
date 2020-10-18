@@ -1,3 +1,8 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
 <h1>Hello 2DX2</h1>
 
 {% for product in products.all %}
@@ -27,3 +32,5 @@
           {% endif %}
     
 </body>
+
+{% endblock content %}

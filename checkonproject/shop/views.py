@@ -170,9 +170,3 @@ def cart_or_buy(request, product_id):
             return redirect('shopping', category.pk)
         
 
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> d994580c1238db3f4ce7635dc5c430faf9256075

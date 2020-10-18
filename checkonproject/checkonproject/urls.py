@@ -30,10 +30,9 @@ urlpatterns = [
     path('<int:product_id>/cart_or_buy/', views.cart_or_buy, name='cart_or_buy'),
     path('cart/<int:user_id>/', views.cart, name='cart'),
     path('delete/<int:product_id>/', views.delete_cart, name='delete_cart'),
-<<<<<<< HEAD
     path('mypage/<int:user_id>/', views.mypage, name = 'mypage'),
-=======
+
+
     
->>>>>>> d994580c1238db3f4ce7635dc5c430faf9256075
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 
