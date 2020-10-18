@@ -8,6 +8,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.db.models import F
+import operator
 # from django.db.models import Avg, Max, Min, Sum, Count
 
 # Create your views here.
@@ -112,7 +113,20 @@ def mypage(request, user_id):
     for key, value in countProduct.items():
         print(key, " : ", value)
 
-    context = {'user': user, 'cart': cart, 'categories': categories, 'posts' : posts, 'countProduct' : countProduct}
+    
+    # sorting-> value값 기준으로 내림차순 정렬
+    sortProductTuple = sorted(countProduct.items(), key=operator.itemgetter(1), reverse=True)
+    firstrank = sortProductTuple[0][0]
+    print(type(firstrank))
+    
+    # 타이틀 분류 (switch문과 비슷)
+    def f(x):
+        return {1:"숲속 사냥꾼 다람쥐", 2:"강가의 곰", 3:"단백질 백만장자", 4:"채소 요정 코끼리", 5:"대지의 신 데메테르",
+                6:"목장 주인", 7:"밥상을 차리기에는 인생이 짧다", 8:"수분 부자", 9:"헨젤과 그레텔", 10:"간단하게 한끼", 11:"내몸은 내가 챙기자!"}[x]
+    title = f(firstrank)
+    print(title)
+
+    context = {'user': user, 'cart': cart, 'categories': categories, 'posts' : posts, 'countProduct' : countProduct, 'title' : title}
 
     return render(request, 'mypage.html', context)
 
