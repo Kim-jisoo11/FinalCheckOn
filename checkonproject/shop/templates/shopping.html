@@ -6,6 +6,10 @@
 
 
 {% block content %}
+
+
+
+
 <!-- CSS only -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -25,7 +29,17 @@
 
 
 <!-- <div class="content">
-    <div class="product_title"> -->
+    <div class="product_title"> --><!-- Image and text -->
+
+
+<!-- <nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="{% url 'index' %}">
+      <img src="/media/images/logo2.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+      CheckOn
+    </a>
+</nav> -->
+
+
 <h2>
 
     <h2> {{category}}</h2>
@@ -58,6 +72,7 @@
             <div class="card-body">
                 <h4 class="card-title"> {{  post.name  }}</h4>
                 <h5 class="card-title"> {{  post.price  }}원</h5>
+                
 
                 <form action="{% url 'cart_or_buy' post.id %}" , method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
@@ -66,6 +81,7 @@
                     {% if post.quantity > 0 %}
                     <input type="number" name="quantity" min="0" max="10" />
                     <button type="submit" name="add_cart" value="add_cart">주문하기</button>
+                    
 
                     <!-- modal 구동 버튼 (trigger) <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"> Modal 띄우기 </button>
 
@@ -134,3 +150,17 @@
 
 
 {% endblock content %}
+
+
+
+
+<!-- 
+
+<button type="submit" onclick="alertConfirm()">신청하기</button>
+<script>
+    
+    function alertConfirm() {
+      var alertToVisiter = alert('신청되었습니다.');
+      event.preventDefault();
+    }
+</script> -->
