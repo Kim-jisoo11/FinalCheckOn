@@ -23,10 +23,7 @@ a:visited {
     text-decoration: none;
 }
 
-header{
-    position: sticky;
-    top: 0;
-}
+
 /* Navbar */
 
 .nav {
@@ -41,7 +38,8 @@ header{
 
     /* 위치 설정 */
     display: flex;
-    position: relative;
+    position: fixed;
+    top: 0;
     z-index: 99;
 
 }
@@ -94,6 +92,16 @@ ul{
     padding-inline-start: 40px;
 }
 
+.user{
+
+    text-align: center;
+    vertical-align:middle;
+
+    width: 30px;
+    height: 30px;
+    line-height: 60px;
+}
+
 
 
 
@@ -106,4 +114,5 @@ ul{
     line-height: 100px;
     vertical-align: middle;
     color: rgb(88, 88, 88);
+    margin-bottom: 0;
 }

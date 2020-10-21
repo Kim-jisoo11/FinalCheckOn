@@ -17,10 +17,11 @@ button {
     background:rgb(218, 41, 28);
     color: rgb(255, 255, 255);
     border: none;
+    border-radius: 5px;
     position: relative;
     height: 30px;
     font-size: 1em;
-    padding: 0 2em;
+    padding: 0 1em;
     cursor: pointer;
     transition: 800ms ease all;
     outline: none;

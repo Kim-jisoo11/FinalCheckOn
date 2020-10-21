@@ -5,8 +5,8 @@
 {% block link %}{% static 'css/index.css' %}{% endblock %}
 
 {% block content %}
-
-  <p class="title">당신의 쇼핑유형은?</p>
+  <div class="index-container">
+  <p class="title">CheckOn에서 당신의 쇼핑유형을 확인하세요!</p>
     {% for product in products.all %}
         <img src="{{ product.image.url }}">
         <h4> {{product.name}} </h4>
@@ -23,5 +23,6 @@
     <li><a href="{% url 'login' %}">마이페이지</a></li>
     </ul>
     {% endif %}
+  </div>
 
 {% endblock content %}
