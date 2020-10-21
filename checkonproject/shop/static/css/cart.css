@@ -1,0 +1,29 @@
+.order-list{
+    
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 90%;
+    text-align: center;
+    margin: auto;
+    margin-top: 30px;
+    border-radius: 10%;
+    font-family: 'S-CoreDream-3Light';
+}
+
+td,th {
+    border: 1px solid rgb(202, 202, 202);
+    text-align: center;
+    padding: 8px;
+}
+
+th{
+    background-color: rgb(175, 175, 175);
+}
+
+
+.table-img {
+    width: 100px;
+    height: 100px;
+}
