@@ -1,5 +1,3 @@
-base.css
-
 @font-face {
     font-family: 'S-CoreDream-3Light';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
@@ -41,11 +39,8 @@ a:visited {
     display: flex;
     position: relative;
     z-index: 99;
-    
+
 }
-
-
-
 
 #nav-right{
     display: inline-block;
@@ -57,9 +52,11 @@ a:visited {
     right: 0px;
     line-height: 60px;
 }
+
 #nav-right li{
     list-style: none;
     display: inline-block;
+    float: right;
     font-weight: bold;
     vertical-align: middle;
     color: #FFFFFF;

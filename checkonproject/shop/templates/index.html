@@ -11,16 +11,16 @@
       <h4> {{product.name}} </h4>
   {% endfor %}
 
-    <div class="btn">
-    {% if user.is_authenticated %}
-    <button type="submit"><a href="{% url 'shopping' 1 %}">쇼핑하러가기</a></button>
-    <button type="submit"><a href="{% url 'mypage' user.pk %}">마이페이지</a></button>
+    <div class="index-btn">
+      {% if user.is_authenticated %}
+      <a href="{% url 'shopping' 1 %}">쇼핑하러가기</a>
+      <a href="{% url 'mypage' user.pk %}">마이페이지</a>
 
-    {% else %}
+      {% else %}
 
-    <button type="submit"><a href="{% url 'shopping' 1 %}">상품보러가기</a></button>
-    <button type="submit"><a href="{% url 'login' %}">마이페이지</a></button>
-    {% endif %}
+      <a href="{% url 'shopping' 1 %}">상품보러가기</a>
+      <a href="{% url 'login' %}">마이페이지</a>
+      {% endif %}
     </div>
 
 {% endblock content %}

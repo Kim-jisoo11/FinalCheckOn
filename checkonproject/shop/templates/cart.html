@@ -1,15 +1,10 @@
-<!-- base.html 가져오기-->
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}{{ category }}{% endblock title %}
 {% block link %}{% static 'css/cart.css' %}{% endblock %}
 
 {% block content %}
-    {% load static %}
-    <div class="content">
-        <div id="pagetitle">
-            <h3>SHOPPING LIST</h3>
-        </div>
+    {% if user == request.user %}
         <form action="{% url 'delete_cart' user.pk %}" method="POST">
             <div class="order_list">
                 <table>
@@ -55,8 +50,6 @@
                             
                         </tr>
                     {% endfor %}
-
-                    {{cart.totalAmount}}
                     
                     </tbody>
                 </table>
@@ -73,7 +66,10 @@
             </span>
             </div>
         </form>
-        <!-- pagenation nav -->
+        <br>
+                    전체 금액:{{cart.totalAmount}}
     
     </div>
+    {% endif %}
 {% endblock content %}
+
