@@ -23,6 +23,10 @@ a:visited {
     text-decoration: none;
 }
 
+header{
+    position: sticky;
+    top: 0;
+}
 /* Navbar */
 
 .nav {
@@ -31,8 +35,8 @@ a:visited {
     height: 60px;
 
     /* 컬러 및 투명도 설정 */
-    background-color: rgb(218, 41, 28);
-    box-shadow: 0 3px 10px 0 rgba(204, 204, 204, 0.5);
+    background-color: rgb(255, 255, 255);
+    box-shadow:  3px 3px 10px 3px  rgba(187, 26, 15, 0.1);
     /* border-bottom: solid rgba(131, 119, 236, 0.3) 1px; */
 
     /* 위치 설정 */
@@ -50,8 +54,10 @@ a:visited {
     padding: 0px;
     text-align: center;
     vertical-align:middle;
-    margin: auto;
+    margin-top: 10px;
+    margin-left: 20px;
     width: 30px;
+    height: 30px;
     line-height: 60px;
 }
 
@@ -69,10 +75,14 @@ a:visited {
 #nav-right li{
     list-style: none;
     display: inline-block;
-    float: right;
     vertical-align: middle;
     margin-right: 20px;
-    text-align: -webkit-match-parent;
+    right: 0px;
+    text-align: right;
+}
+
+#nav-right li:last-child {
+    margin-right: 0px;
 }
 
 ul{

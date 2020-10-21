@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Main{% endblock %}
+{% block title %}체크온{% endblock %}
 
 {% block link %}{% static 'css/index.css' %}{% endblock %}
 
@@ -16,9 +16,9 @@
     <ul class="index">
     <li><a href="{% url 'shopping' 1 %}">쇼핑하러가기</a></li>
     <li><a href="{% url 'mypage' user.pk %}">마이페이지</a></li>
-
+    </ul>
     {% else %}
-
+    <ul class="index">
     <li><a href="{% url 'shopping' 1 %}">쇼핑하러가기</a></li>
     <li><a href="{% url 'login' %}">마이페이지</a></li>
     </ul>

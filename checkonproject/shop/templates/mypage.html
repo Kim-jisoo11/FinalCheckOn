@@ -1,15 +1,16 @@
-<!-- base.html 가져오기-->
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}
-{{ category }}
-{% endblock title %}
+{% block title %}체크온|마이페이지{% endblock title %}
 
-{% block link %}{% static 'css/cart.css' %}{% endblock %}
+{% block link %}{% static 'css/mypage.css' %}{% endblock %}
 
 {% block content %}
 
-{{ title }}
+<div class="youare">
+    <img src="{% static 'img/sample.jpg' %}" width="40%" height="40%" alt="image">
+</div>
+
+<p class="title">당신의 유형은 "{{ title }}"</p>
 
 <br>
 
@@ -22,7 +23,6 @@
 
 <button type="submit"><a href="{% url 'cart' user.pk %}">구매내역</a></button>
 
-<br>
 <!-- 팝업 버튼-->
 <button type="submit" onclick="alertConfirm()">신청하기</button>
 

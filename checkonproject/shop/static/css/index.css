@@ -3,7 +3,8 @@ body {
 }
 
 p {
-    font-size: 5rem;
+    font-size: 2rem;
+    margin-top: 350px;
 }
 
 .index {
@@ -15,9 +16,9 @@ p {
     display: inline-block;
     text-align: center;
     vertical-align: middle;
-    color: rgb(255, 0, 0);
+    color: rgb(218, 41, 28);
     margin-right: 50px;
-    font-size: 3rem;
+    font-size: 1rem;
 }
 
 .index li:last-child {
