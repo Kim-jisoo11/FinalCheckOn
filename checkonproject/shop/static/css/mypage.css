@@ -9,17 +9,22 @@
     margin: 60px 0px;
 }
 
+.button{
+    text-align: center;
+}
+
 button {
     background:rgb(218, 41, 28);
     color: rgb(255, 255, 255);
     border: none;
     position: relative;
-    height: 60px;
-    font-size: 1.6em;
+    height: 30px;
+    font-size: 1em;
     padding: 0 2em;
     cursor: pointer;
     transition: 800ms ease all;
     outline: none;
+    margin: 20px 0px;
 }
 
 button:hover {
@@ -51,3 +56,5 @@ button:hover:after {
     width: 100%;
     transition: 800ms ease all;
 }
+
+

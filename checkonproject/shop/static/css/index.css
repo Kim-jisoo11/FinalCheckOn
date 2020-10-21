@@ -2,7 +2,7 @@ body {
     text-align: center;
 }
 
-p {
+.title{
     font-size: 2rem;
     margin-top: 350px;
 }

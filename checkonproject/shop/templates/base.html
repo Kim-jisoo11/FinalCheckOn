@@ -8,9 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>{% block title%}{% endblock %}</title>
   <!-- Css static-->
-  <link rel="stylesheet" href="{% static 'css/base.css' %}">
-  <link rel="stylesheet" href="{% block link %} {% endblock %}">
-
+  <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% block link %} {% endblock %}">
 
 
 <body>
@@ -51,14 +50,11 @@
 
   </main>
 
-  <!-- <footer class="text-muted">
-        <div class="container">
-            <p class="float-right">
-                <a href="{% url 'index' %}">맨 위로 돌아가기</a>
-            </p>
-            <p>2DX2</p>
+  <footer>
+        <div class="footer-text">
+          Copyright ⓒ 멋쟁이사자처럼 8기 2DX2. All Rights Reserved.
         </div>
-    </footer> -->
+  </footer>
 </body>
 
 </html>
