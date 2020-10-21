@@ -1,36 +1,26 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block title %}Main{% endblock %}
+
+{% block link %}{% static 'css/index.css' %}{% endblock %}
 
 {% block content %}
 
-<h1>Hello 2DX2</h1>
+  {% for product in products.all %}
+      <img src="{{ product.image.url }}">
+      <h4> {{product.name}} </h4>
+  {% endfor %}
 
-{% for product in products.all %}
-    <img src="{{ product.image.url }}">
-    <h4> {{product.name}} </h4>
-{% endfor %}
+    <div class="btn">
+    {% if user.is_authenticated %}
+    <button type="submit"><a href="{% url 'shopping' 1 %}">쇼핑하러가기</a></button>
+    <button type="submit"><a href="{% url 'mypage' user.pk %}">마이페이지</a></button>
 
-<body>
-        {% if user.is_authenticated %}
-            <li class="nav-item">
-              <p>{{user.username}}</p>
-              <form action="logout/" method="POST">
-                {% csrf_token %}
-              <input type="submit" value="Log out">
-              </form>
-            </li>
+    {% else %}
 
-            <a href="{% url 'cart' user.pk %}">주문내역</a>
-          {% else %}
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'signup' %}">회원가입</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'login' %}">로그인</a>
-            </li>
-            
-          {% endif %}
-    
-</body>
+    <button type="submit"><a href="{% url 'shopping' 1 %}">상품보러가기</a></button>
+    <button type="submit"><a href="{% url 'login' %}">마이페이지</a></button>
+    {% endif %}
+    </div>
 
 {% endblock content %}

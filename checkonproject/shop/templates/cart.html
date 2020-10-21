@@ -1,10 +1,8 @@
 <!-- base.html 가져오기-->
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}
-{{ category }}
-{% endblock title %}
-
+{% block title %}{{ category }}{% endblock title %}
+{% block link %}{% static 'css/cart.css' %}{% endblock %}
 
 {% block content %}
     {% load static %}
@@ -70,29 +68,12 @@
                 <span class="text">
                     선택상품을
                 </span>
-                <button type="submit" name="buy" value="buy">BUY</button>
                 <button type="submit" name="delete_cart" value="delete_cart">삭제하기</button>
                 {% csrf_token %}
             </span>
             </div>
         </form>
         <!-- pagenation nav -->
-        <div class="board_paging">
-            <ol>
-                {% if orders.has_previous %}
-                    <li class="paging_pre">
-                        <a href="{% url 'shop:order_list' %}?page={{ orders.previous_page_number }}"><</a>
-                    </li>
-                {% endif %}
-
-                <li><a href="#">{{ orders.number }}</a></li>
-
-                {% if orders.has_next %}
-                    <li class="paging_next">
-                        <a href="{% url 'shop:orser_list' %}?page={{ orders.next_page_number }}">></a>
-                    </li>
-                {% endif %}
-            </ol>
-        </div>
+    
     </div>
 {% endblock content %}
