@@ -1,0 +1,25 @@
+body {
+    text-align: center;
+}
+
+p {
+    font-size: 5rem;
+}
+
+.index {
+    padding-left: 0;
+}
+
+.index li {
+    list-style: none;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    color: rgb(255, 0, 0);
+    margin-right: 50px;
+    font-size: 3rem;
+}
+
+.index li:last-child {
+    margin-right: 0px;
+}
