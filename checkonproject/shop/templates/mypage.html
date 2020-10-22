@@ -6,32 +6,33 @@
 
 {% block content %}
 
-<div class="youare">
-    <img src="{% static 'img/sample.jpg' %}" width="40%" height="40%" alt="image">
+<div class="imgbox">
+    <img class="myimg" src="{% static 'img/rabbit.svg' %}" width="40%" height="40%" alt="image">
 </div>
 
 <p class="title">당신의 유형은 "{{ title }}"</p>
 
 <br>
-
+<p class="text">
 {% for key, value in countProduct.items %}
 {{ key }}
 {{ value }}
 {% endfor %}
-
+</p>
 
 
 <br>
 <div class="button">
-    <button type="submit"><a href="{% url 'cart' user.pk %}">구매내역</a></button>
+        <a href="{% url 'cart' user.pk %}"><button class="button_base mybtn" type="submit">구매내역</button></a>
+    
     <br>
 
     <p class="body">{{ title }}들을 위한 랜덤박스가 준비되어 있어요!</p>
     <div class="youare">
-        <img src="{% static 'img/sample.jpg' %}" width="40%" height="40%" alt="image">
+        <img src="{% static 'img/box.svg' %}" width="40%" height="40%" alt="image">
     </div>
     <!-- 팝업 버튼-->
-    <button type="submit" onclick="alertConfirm()">랜덤박스 신청하기</button>
+    <button class="button_base mybtn" type="submit" onclick="alertConfirm()">랜덤박스 신청하기</button>
 
 
     <!-- html 제일 하단에 넣어주세요-->

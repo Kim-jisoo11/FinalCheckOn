@@ -4,73 +4,70 @@
 {% block link %}{% static 'css/cart.css' %}{% endblock %}
 
 {% block content %}
-    {% if user == request.user %}
-        <form action="{% url 'delete_cart' user.pk %}" method="POST">
-            <div class="order-list">
-                <table>
-                    <thead>
-                    <tr>
-                        <th class="image">
-                            상품
-                        </th>
-                        <th class="quantity">
-                            수량
-                        </th>
-                        <th class="price">
-                            주문금액
-                        </th>
-                        <th class="date">
-                            구매일자
-                        </th>
-                        <th class="thumb">
-                            <input type="radio">
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <!-- 리스트 안에 담겨서 나오기 때문에 for 문을 써서 출력 -->
-                    {% for product in cart %}
-                        <tr>
-                            <td class="img">
-                                <img src="{{ product.products.image.url }}" class="table-img" alt="product_Image">
-                                <br>{{ product.products.name }}
-                            </td>
-                            
-                            <td class="quantity">
-                                {{ product.quantity }}
-                            </td>
-                            <td>
-                                {% widthratio product.products.price 1 product.quantity %}
-                                <!-- {{ product.products.price }}  -->
-                            </td>
-                            <td>
-                                DATE
-                            </td>
-                            <td>
-                                <input type="radio" id="product_{{ product.id }}" name="product" value="{{ product.products.id }}">
-                            </td>
-                        </tr>
-                    {% endfor %}
-                    
-                    </tbody>
-                </table>
+{% if user == request.user %}
+<form action="{% url 'delete_cart' user.pk %}" method="POST">
+    <div class="order-list">
+        <table>
+            <thead>
+                <tr>
+                    <th class="image">
+                        상품
+                    </th>
+                    <th class="quantity">
+                        수량
+                    </th>
+                    <th class="price">
+                        주문금액
+                    </th>
+                    <th class="date">
+                        구매일자
+                    </th>
+                    <th class="thumb">
+                        내역선택
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 리스트 안에 담겨서 나오기 때문에 for 문을 써서 출력 -->
+                {% for product in cart %}
+                <tr>
+                    <td class="img">
+                        <img src="{{ product.products.image.url }}" class="table-img" alt="product_Image">
+                        <br>{{ product.products.name }}
+                    </td>
 
-            </div>
+                    <td class="quantity">
+                        {{ product.quantity }}
+                    </td>
+                    <td>
+                        {% widthratio product.products.price 1 product.quantity %}
+                        <!-- {{ product.products.price }}  -->
+                    </td>
+                    <td>
+                        DATE
+                    </td>
+                    <td>
+                        <input type="radio" id="product_{{ product.id }}" name="product"
+                            value="{{ product.products.id }}">
+                    </td>
+                </tr>
+                {% endfor %}
 
-            <div class="order_option">
-            <span class="left">
-                <span class="text">
-                    선택한 내역을
-                </span>
-                <button type="submit" name="delete_cart" value="delete_cart">삭제하기</button>
-                {% csrf_token %}
-            </span>
-            </div>
-        </form>
-        <br>
-                    전체 금액:{{cart.totalAmount}}
-    
+            </tbody>
+        </table>
+
     </div>
-    {% endif %}
-{% endblock content %}
+    <br>
+    <p class="price">전체 금액:{{cart.totalAmount}}</p>
+    <br>
 
+    <div class="order_option">
+        <button type="submit" name="delete_cart" value="delete_cart" class="button_base mybtn">선택내역 삭제</button>
+        {% csrf_token %}
+    </div>
+</form>
+
+
+</div>
+{% endif %}
+{% endblock content %}

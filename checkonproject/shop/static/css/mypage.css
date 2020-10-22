@@ -1,61 +1,125 @@
+body{
+    background-color: rgb(255, 255, 255);
+    padding: 0;
+    margin: 0;
+    border: 0;
+    overflow-x: none;
+    font-smooth: always;
+    -webkit-font-smoothing: antialiased;
+}
+p{
+    text-align: center;
+}
 .title {
     font-size: 40px;
     text-align: center;
     margin: 30px 0px;
 }
 
-.youare {
+.imgbox {
     text-align: center;
-    margin: 60px 0px;
+    
 }
 
-.button{
-    text-align: center;
+.myimg{
+    margin-top: 150px;
+    margin-bottom: 10px;
 }
 
-button {
-    background:rgb(218, 41, 28);
-    color: rgb(255, 255, 255);
-    border: none;
-    border-radius: 5px;
-    position: relative;
-    height: 30px;
-    font-size: 1em;
-    padding: 0 1em;
-    cursor: pointer;
-    transition: 800ms ease all;
+.youare{
+    text-align: center
+}
+
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+
+.preserve-3d {
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+}
+
+
+@media screen and (max-width: 1260px) {
+    .back {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 840px) {
+    .back {
+        width: 100%;
+    }
+}
+
+.button_base {
+    margin: 0;
+    border: 0;
     outline: none;
-    margin: 20px 0px;
+    border-radius: 25px;
+    font-size: 15px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    margin-top: -25px;
+    margin-left: -100px;
+    margin-bottom: 100px;
+    width: 200px;
+    height: 50px;
+    box-shadow:  3px 2px 6px 2px  rgba(238, 50, 36, 0.2);
+    text-align: center;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-user-select: none;
+    cursor: default;
 }
 
-button:hover {
-    background: rgb(255, 255, 255);
+.button_base:hover {
+    cursor: pointer;
+}
+
+/* ### ### ### 09 */
+.mybtn {
     color: rgb(218, 41, 28);
+    background-color: #ffffff;
+    /* border: rgb(218, 41, 28) solid 1px; */
+    padding: 10px;
+    transition: all 0.1s ease;
+    -webkit-transition: all 0.1s ease;
+    -moz-transition: all 0.1s ease;
 }
 
-button:before,
-button:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 2px;
-    width: 0;
-    background: rgb(218, 41, 28);
-    transition: 400ms ease all;
+.mybtn:hover {
+    color: #ffffff;
+    background-color: rgb(218, 41, 28);
+    animation: b09_electric_blinkIn 0.1s step-end 0 2;
+    -webkit-animation: b09_electric_blinkIn 0.1s step-end 0 2;
+    -moz-animation: b09_electric_blinkIn 0.1s step-end 0 2;
+    transition: all 0.2s ease 0.2s;
+    -webkit-transition: all 0.2s ease 0.2s;
+    -moz-transition: all 0.2s ease 0.2s;
 }
 
-button:after {
-    right: inherit;
-    top: inherit;
-    left: 0;
-    bottom: 0;
+@-webkit-keyframes b09_electric_blinkIn {
+    from,
+    to {
+        background-color: #f8f8f8;
+        color:  rgb(218, 41, 28);
+    }
+    50% {
+        background-color: #ffffff;
+        color: rgb(218, 41, 28);
+    }
 }
 
-button:hover:before,
-button:hover:after {
-    width: 100%;
-    transition: 800ms ease all;
+@-moz-keyframes b09_electric_blinkIn {
+    from,
+    to {
+        background-color: #f8f8f8;
+        color: rgb(218, 41, 28);
+    }
+    50% {
+        background-color: #ffffff;
+        color: rgb(218, 41, 28);
+    }
 }
-
-
+ 
