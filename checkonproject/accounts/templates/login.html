@@ -49,12 +49,13 @@
       font-weight: normal;
       font-style: normal;
     }
+
     @font-face {
       font-family: 'S-CoreDream-2ExtraLight';
       src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-2ExtraLight.woff') format('woff');
       font-weight: normal;
       font-style: normal;
- }
+    }
 
     @font-face {
       font-family: 'S-CoreDream-1Thin';
@@ -136,6 +137,15 @@
         <button class="btn btn-lg btn-dark btn-block" type="submit" style="font-size :18px;"> 로그인</button>
         <div class="text-center">
           <br>
+          {% for message in messages %}
+
+          <div class="alert alert-success">
+            <a class="close" href="#" data-dismiss="alert">×</a>
+
+            {{ message }}
+
+          </div>
+          {% endfor %}
           <a href="{% url 'signup' %}" style=" font-family : 'S-CoreDream-5Medium'; font-size : 18px;">회원가입</a>
         </div>
         <br>
