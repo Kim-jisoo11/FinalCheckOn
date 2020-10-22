@@ -37,8 +37,8 @@
 <br>
 <p class="text">
 {% for key, value in countProduct.items %}
-{{ key }}
-{{ value }}
+{{ key }} : {{ value|floatformat:2}}
+<br>
 {% endfor %}
 </p>
 
