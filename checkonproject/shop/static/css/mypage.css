@@ -1,10 +1,5 @@
 body{
     background-color: rgb(255, 255, 255);
-    padding: 0;
-    margin: 0;
-    border: 0;
-    overflow-x: none;
-    font-smooth: always;
     -webkit-font-smoothing: antialiased;
 }
 p{
@@ -77,7 +72,7 @@ p{
     cursor: pointer;
 }
 
-/* ### ### ### 09 */
+/* button style */
 .mybtn {
     color: rgb(218, 41, 28);
     background-color: #ffffff;
