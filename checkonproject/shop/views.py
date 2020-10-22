@@ -127,7 +127,10 @@ def mypage(request):
     
     # sorting-> value값 기준으로 내림차순 정렬
     sortProductTuple = sorted(countProduct.items(), key=operator.itemgetter(1), reverse=True)
-    firstrank = sortProductTuple[0][0]
+    try:
+        firstrank = sortProductTuple[0][0]
+    except:
+        return render(request, 'mypageExcept.html')
     print(type(firstrank))
     
     # 타이틀 분류 (switch문과 비슷)
@@ -138,7 +141,6 @@ def mypage(request):
     print(title)
 
     context = {'cart': cart, 'categories': categories, 'posts' : posts, 'countProduct' : countProduct, 'title' : title, 'firstrank':firstrank, "productCategory":productCategory, "print_category":print_category}
-
     return render(request, 'mypage.html', context)
 
 

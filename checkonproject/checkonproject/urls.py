@@ -32,6 +32,7 @@ urlpatterns = [
     path('cart/', views.cart, name='cart'),
     path('delete/<int:product_id>/', views.delete_cart, name='delete_cart'),
     path('mypage/', views.mypage, name = 'mypage'),
+    path('mypageExcept/', views.mypage, name='mypageExcept'),
     path('shopping/1/login/', accounts.views.login, name ='login'),
     path('shopping/2/login/', accounts.views.login, name ='login'),
     path('shopping/3/login/', accounts.views.login, name ='login'),
