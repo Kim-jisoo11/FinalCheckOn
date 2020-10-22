@@ -15,7 +15,7 @@
     {% if user.is_authenticated %}
     <ul class="index">
     <li><a href="{% url 'shopping' 1 %}">← 쇼핑하러가기</a></li>
-    <li><a href="{% url 'mypage' user.pk %}">내 유형 보러가기 →</a></li>
+    <li><a href="{% url 'mypage' %}">내 유형 보러가기 →</a></li>
     </ul>
     {% else %}
     <ul class="index">

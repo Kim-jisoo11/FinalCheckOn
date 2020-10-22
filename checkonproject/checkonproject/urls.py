@@ -28,9 +28,9 @@ urlpatterns = [
     path('logout/',accounts.views.logout, name = 'logout'),
     path('signup/',accounts.views.signup, name = 'signup'),
     path('<int:product_id>/cart_or_buy/', views.cart_or_buy, name='cart_or_buy'),
-    path('cart/<int:user_id>/', views.cart, name='cart'),
+    path('cart/', views.cart, name='cart'),
     path('delete/<int:product_id>/', views.delete_cart, name='delete_cart'),
-    path('mypage/<int:user_id>/', views.mypage, name = 'mypage'),
+    path('mypage/', views.mypage, name = 'mypage'),
 
 
     
