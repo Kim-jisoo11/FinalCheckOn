@@ -47,7 +47,7 @@
                 
                 <p class = "form-order">수량
                     {% if post.quantity > 0 %}
-                    <input type="number" name="quantity" min="0" max="10" />
+                    <input type="number" name="quantity" min="1" max="10" />
                     {% if user.is_authenticated %}
                     <button  class ="button_mybtn"  type="submit"  name="add_cart" value="add_cart" onClick="alertOK()"> 주문하기 </button></p>
                     {% else %}

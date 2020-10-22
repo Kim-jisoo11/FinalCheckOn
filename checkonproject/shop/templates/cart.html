@@ -42,6 +42,7 @@
 
                     <td class="quantity">
                         {{ product.quantity }}
+
                     </td>
                     <td>
                         <!-- {% widthratio product.products.price 1 product.quantity %} -->
@@ -65,12 +66,16 @@
     <br>
     <p class="price">전체 금액:{{cart.totalAmount}} 원</p>
     <br>
-
-    <div class="order_option">
-        <button type="submit" name="delete_cart" value="delete_cart" class="button_base mybtn"
-            onClick="alertDelete()">선택내역 삭제</button>
-        {% csrf_token %}
         
+        {% if cart.quantity == 0 %}
+        <button class="button_base mybtn" type="submit" onClick="alertConfirm()"> 선택내역 삭제 </button>
+        {%else%}
+        <button class="button_base mybtn" type="submit" name="delete_cart" value="delete_cart" onClick="alertDelete()">
+            선택내역 삭제 </button>
+        {% endif %}
+    
+    {% csrf_token %}
+
     </div>
 </form>
 
@@ -79,6 +84,11 @@
 
 
 <script>
+    function alertConfirm() {
+        var alertToVisiter = alert('삭제할 항목을 선택해주세요.');
+        event.preventDefault();
+    }
+
     function alertDelete() {
         var alertToVisiter = alert('삭제되었습니다.');
         frm.method = "POST";
