@@ -104,11 +104,25 @@ def mypage(request):
 
     # 카테고리 통계
     countProduct = {}
+    def productCategory(x):
+        return {1:"과일, 견과", 2:"수산", 3:"정육, 계란", 4:"채소", 5:"쌀, 잡곡", 6:"유제품", 7:"반찬, 간편식", 8:"액체류(생수, 음료, 주류)", 9:"과자, 빵", 10:"즉석조리(라면, 통조림, 소스장류)", 11:"건강식품"}[x]
+    print_category = {}
     for i in cart:
         countProduct[i.category_id] = isBought.get(i.category_id) / totalSum * 100
 
+        print_category[productCategory(i.category_id)] = countProduct.get(i.category_id)
+        # 과일, 견과  : 14.28 형식으로 출력하기 위함
+        # productCategory(i.caegory_id) = "과일, 견과"
+        # print_category = {"과일, 견과":14.28...}
+
+    for key, value in print_category.items():
+        print(key, " : ", value)
+        #출력 확인용
     for key, value in countProduct.items():
         print(key, " : ", value)
+        #출력 확인용
+    
+    
     
     
     # sorting-> value값 기준으로 내림차순 정렬
@@ -123,7 +137,7 @@ def mypage(request):
     title = f(firstrank)
     print(title)
 
-    context = {'cart': cart, 'categories': categories, 'posts' : posts, 'countProduct' : countProduct, 'title' : title, 'firstrank':firstrank}
+    context = {'cart': cart, 'categories': categories, 'posts' : posts, 'countProduct' : countProduct, 'title' : title, 'firstrank':firstrank, "productCategory":productCategory, "print_category":print_category}
 
     return render(request, 'mypage.html', context)
 
