@@ -29,7 +29,7 @@ class Cart(models.Model):
     products = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='wish_product', blank=True)
     quantity = models.IntegerField(default=1)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='wish_category', null=True)
-    
+    pub_date = models.DateTimeField(auto_now_add = True, null=True)
 
     def __str__(self):
         return '{} // {}'.format(self.user, self.products.name)
