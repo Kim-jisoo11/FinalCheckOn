@@ -39,8 +39,8 @@
                 {% endif %}
             </div>
             
-            <p class = "product_name">{{  post.name  }}</p>
-            <p class = "product_price"> {{  post.price  }}원</p>
+            <p class="product_name">{{  post.name  }}</p>
+            <p class="product_price"> {{  post.price  }}원</p>
             <!-- 상품 주문 버튼-->
             <form action="{% url 'cart_or_buy' post.id %}" , method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
