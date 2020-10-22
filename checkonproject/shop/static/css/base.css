@@ -77,9 +77,8 @@ header {
 }
 
 #nav-right {
-    font-smooth: always;
     display: inline-block;
-    width: 310px;
+    width: 390px;
     position: absolute;
     padding: 0px;
     margin: 0px;
