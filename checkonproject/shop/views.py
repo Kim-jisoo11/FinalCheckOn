@@ -111,7 +111,7 @@ def mypage(request, user_id):
 
     for key, value in countProduct.items():
         print(key, " : ", value)
-
+    
     
     # sorting-> value값 기준으로 내림차순 정렬
     sortProductTuple = sorted(countProduct.items(), key=operator.itemgetter(1), reverse=True)
@@ -125,7 +125,7 @@ def mypage(request, user_id):
     title = f(firstrank)
     print(title)
 
-    context = {'user': user, 'cart': cart, 'categories': categories, 'posts' : posts, 'countProduct' : countProduct, 'title' : title}
+    context = {'user': user, 'cart': cart, 'categories': categories, 'posts' : posts, 'countProduct' : countProduct, 'title' : title, 'firstrank':firstrank}
 
     return render(request, 'mypage.html', context)
 

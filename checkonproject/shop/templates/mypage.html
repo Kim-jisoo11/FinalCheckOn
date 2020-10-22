@@ -6,9 +6,31 @@
 
 {% block content %}
 
+
 <div class="imgbox">
+    {% if firstrank == 1 %}
+    <img class="myimg" src="{% static 'img/bird.svg' %}" width="40%" height="40%" alt="image"> <!---->
+    {% elif firstrank == 2 %}
+    <img class="myimg" src="{% static 'img/bird.svg' %}" width="40%" height="40%" alt="image">
+    {% elif firstrank == 3 %}
+    <img class="myimg" src="{% static 'img/bird.svg' %}" width="40%" height="40%" alt="image"> <!---->
+    {% elif firstrank == 4 %}
+    <img class="myimg" src="{% static 'img/elephant.svg' %}" width="40%" height="40%" alt="image">
+    {% elif firstrank == 5 %}
+    <img class="myimg" src="{% static 'img/bird.svg' %}" width="40%" height="40%" alt="image"> <!---->
+    {% elif firstrank == 6 %}
+    <img class="myimg" src="{% static 'img/bird.svg' %}" width="40%" height="40%" alt="image"> <!---->
+    {% elif firstrank == 7 %}
+    <img class="myimg" src="{% static 'img/bird.svg' %}" width="40%" height="40%" alt="image"> <!---->
+    {% elif firstrank == 8 %}
+    <img class="myimg" src="{% static 'img/bird.svg' %}" width="40%" height="40%" alt="image"> <!---->
+    {% elif firstrank == 9 %}
+    <img class="myimg" src="{% static 'img/bird.svg' %}" width="40%" height="40%" alt="image"> <!---->
+    {% elif firstrank == 10 %}
     <img class="myimg" src="{% static 'img/rabbit.svg' %}" width="40%" height="40%" alt="image">
+    {% endif %}
 </div>
+
 
 <p class="title">당신의 유형은 "{{ title }}"</p>
 
@@ -19,7 +41,6 @@
 {{ value }}
 {% endfor %}
 </p>
-
 
 <br>
 <div class="button">
