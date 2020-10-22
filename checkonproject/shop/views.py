@@ -123,7 +123,7 @@ def mypage(request):
     title = f(firstrank)
     print(title)
 
-    context = {'user': user, 'cart': cart, 'categories': categories, 'posts' : posts, 'countProduct' : countProduct, 'title' : title, 'firstrank':firstrank}
+    context = {'cart': cart, 'categories': categories, 'posts' : posts, 'countProduct' : countProduct, 'title' : title, 'firstrank':firstrank}
 
     return render(request, 'mypage.html', context)
 
