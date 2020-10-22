@@ -66,7 +66,7 @@ def cart(request):
     for key, value in countProduct.items():
         print(key, " : ", value)
 
-    context = { 'cart': cart, 'categories': categories, 'posts' : posts, 'countProduct' : countProduct}
+    context = {'cart': cart, 'categories': categories, 'posts' : posts, 'countProduct' : countProduct, 'totalSum' : totalSum}
 
     return render(request, 'cart.html', context)
 
