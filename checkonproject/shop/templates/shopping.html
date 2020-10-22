@@ -14,11 +14,15 @@
     <div class = "shopping_all">
     <br>
     <ul class="category_bar">
-        <li class="category_list"><a class="active" href="#">{{category}}</a></li>
+        
         {% for categories in categories %}
-        <li class="category_list"><a href="{% url 'shopping' categories.id %}">{{categories}}</a></li>
-
+        {% if category == categories %}
+        <li class="category_list"><a href="{% url 'shopping' categories.id %}" style="background-color: #c93b2b;" >&nbsp;&nbsp;{{categories}}&nbsp;&nbsp;</a></li>
+        {% else %}
+        <li class="category_list"><a href="{% url 'shopping' categories.id %}">&nbsp;&nbsp;{{categories}}&nbsp;&nbsp;</a></li>
+        {% endif %}
         {% endfor %}
+
     </ul>
     <br>
 
@@ -28,23 +32,23 @@
     <div class="product-container">
         {% for post in posts %}
         <div class="product-card">
-            <!-- image-->
-
-            {% if post.image %}
-            <img src="{{ post.image.url }}" width="250px;" height="250px;">
-            {% endif %}
-
-            <br>
-            <h4>{{  post.name  }}</h4>
-            <h6> {{  post.price  }}원</h6>
-
+            <!-- 상품 이미지-->
+            <div class = "product-img">
+                {% if post.image %}
+                <img src="{{ post.image.url }}">
+                {% endif %}
+            </div>
+            
+            <p class = "product_name">{{  post.name  }}</p>
+            <p class = "product_price"> {{  post.price  }}원</p>
+            <!-- 상품 주문 버튼-->
             <form action="{% url 'cart_or_buy' post.id %}" , method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 {% if user.is_authenticated %}
-                <h6>수량
+                <p class = "form-order">수량
                     {% if post.quantity > 0 %}
                     <input type="number" name="quantity" min="0" max="10" />
-                    <button type="submit" name="add_cart" value="add_cart">주문하기</button></h6>
+                    <button class ="button_mybtn"  type="submit" name="add_cart" value="add_cart"> 주문하기 </button></p>
                 {% endif %}
                 {% endif %}
             </form>
@@ -79,20 +83,16 @@
         </div>
     </div>
 
-
+<script>
+    function alertConfirm() {
+      var alertToVisiter = alert('주문되었습니다.');
+      event.preventDefault();
+    }
+</script>
     
 </div>
 {% endblock content %}
 </body>
 
 
-<!-- 
 
-<button type="submit" onclick="alertConfirm()">신청하기</button>
-<script>
-    
-    function alertConfirm() {
-      var alertToVisiter = alert('신청되었습니다.');
-      event.preventDefault();
-    }
-</script> -->
