@@ -24,18 +24,17 @@
 
         <ul id="nav-right">
 
-          <li><a class="link" href="{% url 'shopping' 1 %}">SHOP</a></li>
+          <li><a class="link" href="{% url 'shopping' 1 %}">쇼핑</a></li>
           {% if user.is_authenticated %}
-          <li><a class="link" href="{% url 'cart' %}">ORDER</li>
-          <li><a class="link" href="{% url 'mypage' %}"><img class="user" src="{% static 'img/logo.png' %}" width="30"
+          <li><a class="link" href="{% url 'cart' %}">주문내역</li>
+          <li><a class="link" href="{% url 'mypage' %}"><img class="user" src="{% static 'img/user.svg' %}" width="30"
                 height="30" alt="profile">&nbsp;{{user.username}}님</a></li>
-          <li>
-          <li><a class="link" href="{% url 'logout' %}">logout</a></li>
+          <li><a class="link" href="{% url 'logout' %}">로그아웃</a></li>
           </li>
           {% else %}
 
-          <li><a class="link" href="{% url 'signup' %}">Sign up</a></li>
-          <li><a class="link" href="{% url 'login' %}">Log in</a></li>
+          <li><a class="link" href="{% url 'signup' %}">회원가입</a></li>
+          <li><a class="link" href="{% url 'login' %}">로그인</a></li>
 
           {% endif %}
 

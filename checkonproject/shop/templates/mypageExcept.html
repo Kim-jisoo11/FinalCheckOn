@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}마이페이지{% endblock title %}
+
+{% block link %}{% static 'css/mypage.css' %}{% endblock %}
+
+{% block content %}
+<div class="imgbox">
+<img class="myimg" src="{% static 'img/gunchim.png' %}" width="30%" height="30%" alt="image">
+</div>
+<p class="title">상품을 주문해야 소비 유형을 분석할 수 있어요!</p>
+
+{% endblock content %}
