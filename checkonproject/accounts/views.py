@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
-from django.contrib import auth
+from django.contrib import auth, messages
 
 
 def signup(request):
@@ -21,9 +21,11 @@ def login(request):
 
         if user is not None :
             auth.login(request, user)
-            return redirect('/')
-        else : 
-            return render (request, 'login.html',{'error':'username or password is not correct.'})
+            return redirect('index')
+
+        else:
+               messages.error(request,'😕 아이디 또는 비밀번호가 일치하지 않습니다.')
+               return redirect('login')
     else : 
         return render (request, 'login.html')
 
