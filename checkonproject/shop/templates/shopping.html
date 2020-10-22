@@ -23,34 +23,34 @@
 
     <!-- 상품 내역 -->
 
-    <div class = "product-container">
-    {% for post in posts %}
-    <div class="product-card" >
-        <!-- image-->
-        
-        {% if post.image %}
-        <img src="{{ post.image.url }}" width="250px;" height="250px;">
-        {% endif %}
-        
-        <br>
-        <h4>{{  post.name  }}</h4>
-        <h6> {{  post.price  }}원</h6>
+    <div class="product-container">
+        {% for post in posts %}
+        <div class="product-card">
+            <!-- image-->
 
-        <form action="{% url 'cart_or_buy' post.id %}" , method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            {% if user.is_authenticated %}
-            <h6>수량
-            {% if post.quantity > 0 %}
-            <input type="number" name="quantity" min="0" max="10" />
-            <button type="submit" name="add_cart" value="add_cart">주문하기</button></h6>
+            {% if post.image %}
+            <img src="{{ post.image.url }}" width="250px;" height="250px;">
             {% endif %}
-            {% endif %}
-        </form>
+
+            <br>
+            <h4>{{  post.name  }}</h4>
+            <h6> {{  post.price  }}원</h6>
+
+            <form action="{% url 'cart_or_buy' post.id %}" , method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% if user.is_authenticated %}
+                <h6>수량
+                    {% if post.quantity > 0 %}
+                    <input type="number" name="quantity" min="0" max="10" />
+                    <button type="submit" name="add_cart" value="add_cart">주문하기</button></h6>
+                {% endif %}
+                {% endif %}
+            </form>
 
 
+        </div>
+        {% endfor %}
     </div>
-    {% endfor %}
-</div>
 
 
     <!-- pagenation nav -->
@@ -74,20 +74,11 @@
         <br>
 
     </div>
-
+    <footer>
+        <div class="footer">
+            Copyright ⓒ 멋쟁이사자처럼 8기 팀 2DX2. All Rights Reserved.
+        </div>
+    </footer>
 
     {% endblock content %}
 </body>
-
-
-
-<!-- 
-
-<button type="submit" onclick="alertConfirm()">신청하기</button>
-<script>
-    
-    function alertConfirm() {
-      var alertToVisiter = alert('신청되었습니다.');
-      event.preventDefault();
-    }
-</script> -->

@@ -12,6 +12,7 @@
   <link rel="stylesheet" type="text/css" href="{% block link %} {% endblock %}">
 
 </head>
+
 <body>
   <!--navbar -->
   <header>
@@ -24,10 +25,10 @@
 
         <li><a class="link" href="{% url 'shopping' 1 %}">SHOP</a></li>
         {% if user.is_authenticated %}
-        <li><a class="link" href="{% url 'mypage' %}"><img class="user" src="{% static 'img/logo.png' %}"
-              width="30" height="30" alt="profile">&nbsp;{{user.username}}님</a></li>
+        <li><a class="link" href="{% url 'mypage' %}"><img class="user" src="{% static 'img/logo.png' %}" width="30"
+              height="30" alt="profile">&nbsp;{{user.username}}님</a></li>
         <li>
-          <li><a class="link" href="{% url 'logout' %}">logout</a></li>
+        <li><a class="link" href="{% url 'logout' %}">logout</a></li>
         </li>
         {% else %}
 
@@ -39,22 +40,10 @@
       </ul>
     </div>
   </header>
-  <div class="container">
-    <!-- main content-->
-    <main role="main">
-      {% block content %}
 
+  {% block content %}
+  {% endblock %}
 
-      {% endblock %}
-
-    </main>
-
-    <footer>
-      <div class="footer">
-        Copyright ⓒ 멋쟁이사자처럼 8기 팀 2DX2. All Rights Reserved.
-      </div>
-    </footer>
-  </div>
 </body>
 
 </html>
