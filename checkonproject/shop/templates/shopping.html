@@ -2,157 +2,82 @@
 
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}
+{% block title %}{% endblock title %}
 
-{% endblock title %}
+{% block link %}{% static 'css/shopping.css' %}{% endblock %}
 
 
 {% block content %}
 
-
-
-
-<!-- CSS only -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
-<!-- JS, Popper.js, and jQuery -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-</script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
-</script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
-</script>
-
-<!-- <link rel="stylesheet" type='text/css' href="{% static 'style.css' %}"> -->
-
-
-<!-- <div class="content">
-    <div class="product_title"> --><!-- Image and text -->
-
-
-<!-- <nav class="navbar navbar-dark bg-dark">
-    <a class="navbar-brand" href="{% url 'index' %}">
-      <img src="/media/images/logo2.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
-      CheckOn
-    </a>
-</nav> -->
-
-
-<h2>
-
-    <h2> {{category}}</h2>
-    {% for categories in categories %}
-    <button type="button" class="btn btn-warning"><a
-            href="{% url 'shopping' categories.id %}">{{categories}}</a></button>
+<body>
     <br>
-    {% endfor %}
-    </div>
-</h2>
+    <ul>
+        <li><a class="active" href="#">{{category}}</a></li>
+        {% for categories in categories %}
+        <li><a href="{% url 'shopping' categories.id %}">{{categories}}</a></li>
 
-<!-- 상품 내역 -->
-
-<div class="container">
-    <div class="card-columns">
-        {% for post in posts %}
-        <div class="card mb-4 shadow-sm">
-            <!-- image-->
-            {% if post.image %}
-            <img src="{{ post.image.url }}" width="20%" height="30%" class="card-img-top" alt="post_Image">
-            {% else %}
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg"
-                preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
-                <title>Category</title>
-                <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef" dy=".3em">
-                    post</text>
-            </svg>
-            {% endif %}
-
-            <div class="card-body">
-                <h4 class="card-title"> {{  post.name  }}</h4>
-                <h5 class="card-title"> {{  post.price  }}원</h5>
-                
-
-                <form action="{% url 'cart_or_buy' post.id %}" , method="POST" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {% if user.is_authenticated %}
-                    <h4>수량</h4>
-                    {% if post.quantity > 0 %}
-                    <input type="number" name="quantity" min="0" max="10" />
-                    <button type="submit" name="add_cart" value="add_cart">주문하기</button>
-                    
-
-                    <!-- modal 구동 버튼 (trigger) <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"> Modal 띄우기 </button>
-
-
-
-                        Modal
-                        <div class="modal modal-center fade" id="my100sizeCenterModal" tabindex="-1" role="dialog"
-                            aria-labelledby="my100sizeCenterModalLabel">
-                            <div class="modal-dialog modal-100size modal-center" role="document">
-                                <div class="modal-content modal-100size">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                                aria-hidden="true">&times;</span></button>
-                                        <h4 class="modal-title" id="myModalLabel">Modal 제목</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        Modal 내용
-                                    </div>
-                                    
-                                        <li class="cart_or_buy">
-
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">계속쇼핑?</button>
-                                            <button type="button" class="btn btn-default" ><a href="{% url 'cart' user.pk %}">장바구니 갈거임</a></button>
-                                        </li>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
-                    {% endif %}
-                    {% endif %}
-
-
-
-
-                </form>
-
-            </div>
-        </div>
         {% endfor %}
+    </ul>
+    <br>
+
+
+    <!-- 상품 내역 -->
+
+    <div class = "product-container">
+    {% for post in posts %}
+    <div class="product-card" >
+        <!-- image-->
+        
+        {% if post.image %}
+        <img src="{{ post.image.url }}" width="250px;" height="250px;">
+        {% endif %}
+        
+        <br>
+        <h4>{{  post.name  }}</h4>
+        <h6> {{  post.price  }}원</h6>
+
+        <form action="{% url 'cart_or_buy' post.id %}" , method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% if user.is_authenticated %}
+            <h6>수량
+            {% if post.quantity > 0 %}
+            <input type="number" name="quantity" min="0" max="10" />
+            <button type="submit" name="add_cart" value="add_cart">주문하기</button></h6>
+            {% endif %}
+            {% endif %}
+        </form>
+
+
     </div>
+    {% endfor %}
 </div>
 
 
+    <!-- pagenation nav -->
+    <div class="container">
+        {# first Previous #}
+        {% if posts.has_previous %}
+        <button type="button" class="btn btn-light"><a href="?page=1"> First </a></button>
+        <button type="button" class="btn btn-light"><a href="?page={{posts.previous_page_number}}">Previous
+            </a></button>
+        {% endif %}
+        {# 3 of 4 #}
+        <span>{{posts.number}}</span>
+        <span>of</span>
+        <span>{{posts.paginator.num_pages}}</span>
+        {# Next Last #}
+        {% if posts.has_next %}
+        <button type="button" class="btn btn-light"><a href="?page={{posts.next_page_number}}"> Next </a></button>
+        <button type="button" class="btn btn-light"><a href="?page={{posts.paginator.num_pages}}">Last</a></button>
+        {% endif %}
+        <br>
+        <br>
 
-<!-- pagenation nav -->
-<div class="container">
-    {# first Previous #}
-    {% if posts.has_previous %}
-    <button type="button" class="btn btn-light"><a href="?page=1"> First </a></button>
-    <button type="button" class="btn btn-light"><a href="?page={{posts.previous_page_number}}">Previous
-        </a></button>
-    {% endif %}
-    {# 3 of 4 #}
-    <span>{{posts.number}}</span>
-    <span>of</span>
-    <span>{{posts.paginator.num_pages}}</span>
-    {# Next Last #}
-    {% if posts.has_next %}
-    <button type="button" class="btn btn-light"><a href="?page={{posts.next_page_number}}"> Next </a></button>
-    <button type="button" class="btn btn-light"><a href="?page={{posts.paginator.num_pages}}">Last</a></button>
-    {% endif %}
-    <br>
-    <br>
-
-</div>
+    </div>
 
 
-{% endblock content %}
-
+    {% endblock content %}
+</body>
 
 
 
