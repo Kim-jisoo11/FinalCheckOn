@@ -29,36 +29,42 @@
             </thead>
             <tbody>
                 <!-- 리스트 안에 담겨서 나오기 때문에 for 문을 써서 출력 -->
-                {% for product in cart %}
-                <tr>
-                    <td class="img">
-                        <img src="{{ product.products.image.url }}" class="table-img" alt="product_Image">
-                        <br>{{ product.products.name }}
-                    </td>
+                {% if totalSum == 0 %}
+                    <tr>
+                        <td class="nothing" colspan="5"><br>구매 내역이 없대요!<br><br></td>
+                    </tr>
+                {% else %}
+                    {% for product in cart %}
+                        <tr>
+                            <td class="img">
+                                <img src="{{ product.products.image.url }}" class="table-img" alt="product_Image">
+                                <br>{{ product.products.name }}
+                            </td>
 
-                    <td class="quantity">
-                        {{ product.quantity }}
-                    </td>
-                    <td>
-                        {% widthratio product.products.price 1 product.quantity %}
-                        <!-- {{ product.products.price }}  -->
-                    </td>
-                    <td>
-                        DATE
-                    </td>
-                    <td>
-                        <input type="radio" id="product_{{ product.id }}" name="product"
-                            value="{{ product.products.id }}">
-                    </td>
-                </tr>
-                {% endfor %}
-
+                            <td class="quantity">
+                                {{ product.quantity }} 
+                            </td>
+                            <td>
+                                <!-- {% widthratio product.products.price 1 product.quantity %} -->
+                                {{ product.products.price }} 원
+                            </td>
+                            <td>
+                                {{ product.pub_date|date:"Y-m-d" }}
+                            </td>
+                            <td>
+                                <input type="radio" id="product_{{ product.id }}" name="product"
+                                    value="{{ product.products.id }}">
+                            </td>
+                        </tr>
+                    
+                    {% endfor %}
+                {% endif %}
             </tbody>
         </table>
 
     </div>
     <br>
-    <p class="price">전체 금액:{{cart.totalAmount}}</p>
+    <p class="price">전체 금액:{{cart.totalAmount}} 원</p>
     <br>
 
     <div class="order_option">

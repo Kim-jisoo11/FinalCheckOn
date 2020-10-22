@@ -11,11 +11,15 @@
 
 <body>
     <br>
+    <div class="all_products">
     <ul>
         <li><a class="active" href="#">{{category}}</a></li>
         {% for categories in categories %}
+        {% if category == categories %}
+        <li style="background-color: red;"><a href="{% url 'shopping' categories.id %}">{{categories}}</a></li>
+        {% else %}
         <li><a href="{% url 'shopping' categories.id %}">{{categories}}</a></li>
-
+        {% endif %}
         {% endfor %}
     </ul>
     <br>
@@ -36,16 +40,7 @@
         <h4>{{  post.name  }}</h4>
         <h6> {{  post.price  }}원</h6>
 
-        <form action="{% url 'cart_or_buy' post.id %}" , method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            {% if user.is_authenticated %}
-            <h6>수량
-            {% if post.quantity > 0 %}
-            <input type="number" name="quantity" min="0" max="10" />
-            <button type="submit" name="add_cart" value="add_cart">주문하기</button></h6>
-            {% endif %}
-            {% endif %}
-        </form>
+     
 
 
     </div>
@@ -76,18 +71,10 @@
     </div>
 
 
-    {% endblock content %}
+    
+</div>
+
 </body>
 
+{% endblock content %}
 
-
-<!-- 
-
-<button type="submit" onclick="alertConfirm()">신청하기</button>
-<script>
-    
-    function alertConfirm() {
-      var alertToVisiter = alert('신청되었습니다.');
-      event.preventDefault();
-    }
-</script> -->

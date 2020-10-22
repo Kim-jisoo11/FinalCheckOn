@@ -30,6 +30,7 @@ class Cart(models.Model):
     quantity = models.IntegerField(default=1)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='wish_category', null=True)
     totalAmount = models.IntegerField(default=0)
+    pub_date = models.DateTimeField(auto_now_add = True, null=True)
 
     def __str__(self):
         return '{} // {}'.format(self.user, self.products.name)

@@ -9,6 +9,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.db.models import F
 import operator
+import accounts.templates
 # from django.db.models import Avg, Max, Min, Sum, Count
 
 # Create your views here.
@@ -38,6 +39,7 @@ def cart(request, user_id):
     for i in cart:
         print(i)
         i.products.price = i.products.price * i.quantity
+        print(i.products.price)
         total_prices = total_prices + i.products.price    
     cart.totalAmount = total_prices
     print(cart.totalAmount)
@@ -67,7 +69,7 @@ def cart(request, user_id):
     for key, value in countProduct.items():
         print(key, " : ", value)
 
-    context = {'user': user, 'cart': cart, 'categories': categories, 'posts' : posts, 'countProduct' : countProduct}
+    context = {'user': user, 'cart': cart, 'categories': categories, 'posts' : posts, 'countProduct' : countProduct, 'totalSum' : totalSum}
 
     return render(request, 'cart.html', context)
 
@@ -168,5 +170,8 @@ def cart_or_buy(request, product_id):
                     return redirect('shopping', category.pk)
             Cart.objects.create(user=user, products=product, quantity=quantity, category=category)
             return redirect('shopping', category.pk)
+
+        # else if 'login' in request.POST:
+        #     return redirect('login')
         
 

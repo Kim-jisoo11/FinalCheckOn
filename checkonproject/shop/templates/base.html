@@ -24,6 +24,9 @@
 
         <li><a class="link" href="{% url 'shopping' 1 %}">SHOP</a></li>
         {% if user.is_authenticated %}
+
+        <li><a class="link" href="{% url 'cart' user.pk %}">ORDER</li>
+
         <li><a class="link" href="{% url 'mypage' user.pk %}"><img class="user" src="{% static 'img/logo.png' %}"
               width="30" height="30" alt="profile">&nbsp;{{user.username}}님</a></li>
         <li>

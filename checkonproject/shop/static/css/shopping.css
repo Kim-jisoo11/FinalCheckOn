@@ -1,3 +1,7 @@
+.all_products {
+    margin-top: 35px;
+}
+
 ul {
     list-style-type: none;
     margin: 0;
@@ -34,7 +38,6 @@ li a:hover:not(.active) {
 .product-card{
     
     margin-left: 20px;
-    margin-right: ;
     width : 300px;
     height : 400px;
     border : 1px solid black;
@@ -44,12 +47,15 @@ li a:hover:not(.active) {
     margin-bottom : 30px;
     margin-top : 30px;
     border-radius : 25px;
-}
-
-.product-card{
     display : inline-flex;
 }
+
 .product-container{
     margin-left: 18px;
     align-items: center;
 }
+
+/* .buyBtn {
+    display: inherit;
+    /* margin-top: -50px; 
+} */
