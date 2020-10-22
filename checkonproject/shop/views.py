@@ -177,7 +177,6 @@ def cart_or_buy(request, product_id):
                 if i.products == product:
                     product = Product.objects.filter(pk=product_id)
                     Cart.objects.filter(user=request.user, products__in=product).update(quantity=F('quantity') + quantity)
-                    messages.success(request,'장바구니 등록 완료')
                     return redirect('shopping', category.pk)
             Cart.objects.create(user=user, products=product, quantity=quantity, category=category)
             return redirect('shopping', category.pk)
