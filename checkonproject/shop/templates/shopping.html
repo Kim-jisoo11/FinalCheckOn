@@ -10,11 +10,13 @@
 {% block content %}
 
 <body>
+
+    <div class = "shopping_all">
     <br>
-    <ul>
-        <li><a class="active" href="#">{{category}}</a></li>
+    <ul class="category_bar">
+        <li class="category_list"><a class="active" href="#">{{category}}</a></li>
         {% for categories in categories %}
-        <li><a href="{% url 'shopping' categories.id %}">{{categories}}</a></li>
+        <li class="category_list"><a href="{% url 'shopping' categories.id %}">{{categories}}</a></li>
 
         {% endfor %}
     </ul>
@@ -23,62 +25,65 @@
 
     <!-- 상품 내역 -->
 
-    <div class = "product-container">
-    {% for post in posts %}
-    <div class="product-card" >
-        <!-- image-->
-        
-        {% if post.image %}
-        <img src="{{ post.image.url }}" width="250px;" height="250px;">
-        {% endif %}
-        
-        <br>
-        <h4>{{  post.name  }}</h4>
-        <h6> {{  post.price  }}원</h6>
+    <div class="product-container">
+        {% for post in posts %}
+        <div class="product-card">
+            <!-- image-->
 
-        <form action="{% url 'cart_or_buy' post.id %}" , method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            {% if user.is_authenticated %}
-            <h6>수량
-            {% if post.quantity > 0 %}
-            <input type="number" name="quantity" min="0" max="10" />
-            <button type="submit" name="add_cart" value="add_cart">주문하기</button></h6>
+            {% if post.image %}
+            <img src="{{ post.image.url }}" width="250px;" height="250px;">
             {% endif %}
-            {% endif %}
-        </form>
+
+            <br>
+            <h4>{{  post.name  }}</h4>
+            <h6> {{  post.price  }}원</h6>
+
+            <form action="{% url 'cart_or_buy' post.id %}" , method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% if user.is_authenticated %}
+                <h6>수량
+                    {% if post.quantity > 0 %}
+                    <input type="number" name="quantity" min="0" max="10" />
+                    <button type="submit" name="add_cart" value="add_cart">주문하기</button></h6>
+                {% endif %}
+                {% endif %}
+            </form>
 
 
+        </div>
+        {% endfor %}
     </div>
-    {% endfor %}
+    <br>
+    <br>
+    <div class="pagi">
+        <!-- pagenation nav -->
+        <div class="container">
+            {# first Previous #}
+            {% if posts.has_previous %}
+            
+            <button type="button" class="btn btn-light"><a href="?page={{posts.previous_page_number}}">Previous
+                </a></button>
+            {% endif %}
+            {# 3 of 4 #}
+            <span>{{posts.number}}</span>
+            <span>of</span>
+            <span>{{posts.paginator.num_pages}}</span>
+            {# Next Last #}
+            {% if posts.has_next %}
+            <button type="button" class="btn btn-light"><a href="?page={{posts.next_page_number}}"> Next </a></button>
+            
+            {% endif %}
+            <br>
+            <br>
+
+        </div>
+    </div>
+
+
+    
 </div>
-
-
-    <!-- pagenation nav -->
-    <div class="container">
-        {# first Previous #}
-        {% if posts.has_previous %}
-        <button type="button" class="btn btn-light"><a href="?page=1"> First </a></button>
-        <button type="button" class="btn btn-light"><a href="?page={{posts.previous_page_number}}">Previous
-            </a></button>
-        {% endif %}
-        {# 3 of 4 #}
-        <span>{{posts.number}}</span>
-        <span>of</span>
-        <span>{{posts.paginator.num_pages}}</span>
-        {# Next Last #}
-        {% if posts.has_next %}
-        <button type="button" class="btn btn-light"><a href="?page={{posts.next_page_number}}"> Next </a></button>
-        <button type="button" class="btn btn-light"><a href="?page={{posts.paginator.num_pages}}">Last</a></button>
-        {% endif %}
-        <br>
-        <br>
-
-    </div>
-
-
-    {% endblock content %}
+{% endblock content %}
 </body>
-
 
 
 <!-- 
