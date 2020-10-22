@@ -27,10 +27,9 @@ def show_category(request, category_id):
     
     return render(request, 'shopping.html', {'category': category, 'categories': categories ,'posts' : posts})
 
-def cart(request, user_id):
+def cart(request):
     categories = Category.objects.all()
-    user = User.objects.get(pk=user_id)
-    cart = Cart.objects.filter(user=user)
+    cart = Cart.objects.filter(user=request.user)
     paginator = Paginator(cart, 10)
     page = request.GET.get('page')
     posts = paginator.get_page(page)
@@ -67,15 +66,14 @@ def cart(request, user_id):
     for key, value in countProduct.items():
         print(key, " : ", value)
 
-    context = {'user': user, 'cart': cart, 'categories': categories, 'posts' : posts, 'countProduct' : countProduct}
+    context = { 'cart': cart, 'categories': categories, 'posts' : posts, 'countProduct' : countProduct}
 
     return render(request, 'cart.html', context)
 
-def mypage(request, user_id):
+def mypage(request):
     categories = Category.objects.all()
-    user = User.objects.get(pk=user_id)
-    cart = Cart.objects.filter(user=user)
-    print(user)
+    cart = Cart.objects.filter(user=request.user)
+    
     paginator = Paginator(cart, 10)
     page = request.GET.get('page')
     posts = paginator.get_page(page)
@@ -111,7 +109,7 @@ def mypage(request, user_id):
 
     for key, value in countProduct.items():
         print(key, " : ", value)
-
+    
     
     # sorting-> value값 기준으로 내림차순 정렬
     sortProductTuple = sorted(countProduct.items(), key=operator.itemgetter(1), reverse=True)
@@ -125,29 +123,30 @@ def mypage(request, user_id):
     title = f(firstrank)
     print(title)
 
-    context = {'user': user, 'cart': cart, 'categories': categories, 'posts' : posts, 'countProduct' : countProduct, 'title' : title}
+    context = {'cart': cart, 'categories': categories, 'posts' : posts, 'countProduct' : countProduct, 'title' : title, 'firstrank':firstrank}
 
     return render(request, 'mypage.html', context)
 
 
 def delete_cart(request, product_id):
     user = request.user
-    cart = Cart.objects.filter(user=user)
+    cart = Cart.objects.filter(user=request.user)
     quantity = 0
-
+    
     if request.method == 'POST':
-        pk = int(request.POST.get('product'))
-        product = Product.objects.get(pk=pk)
-        for i in cart:
-            if i.products == product :
-                quantity =  i.quantity
-        if quantity > 0 :
-            product = Product.objects.filter(pk=pk)
-            cart = Cart.objects.filter(user=user, products__in=product)
-            cart.delete()
-            return redirect('cart', user.pk)
-
-
+        try:
+            pk = request.POST.get('product')
+            product = Product.objects.get(pk=pk)
+            for i in cart:
+                if i.products == product :
+                    quantity =  i.quantity
+            if quantity > 0 :
+                product = Product.objects.filter(pk=pk)
+                cart = Cart.objects.filter(user=request.user, products__in=product)
+                cart.delete()
+                return redirect('cart')
+        except:
+            return redirect('cart')
 
 @login_required
 def cart_or_buy(request, product_id):
@@ -163,7 +162,7 @@ def cart_or_buy(request, product_id):
             for i in cart :
                 if i.products == product:
                     product = Product.objects.filter(pk=product_id)
-                    Cart.objects.filter(user=user, products__in=product).update(quantity=F('quantity') + quantity)
+                    Cart.objects.filter(user=request.user, products__in=product).update(quantity=F('quantity') + quantity)
                     messages.success(request,'장바구니 등록 완료')
                     return redirect('shopping', category.pk)
             Cart.objects.create(user=user, products=product, quantity=quantity, category=category)

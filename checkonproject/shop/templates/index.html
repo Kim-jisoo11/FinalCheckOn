@@ -5,24 +5,26 @@
 {% block link %}{% static 'css/index.css' %}{% endblock %}
 
 {% block content %}
+<div class="container">
   <div class="index-container">
-  <p class="title">CheckOn에서 당신의 쇼핑유형을 확인하세요!</p>
+    <p class="title">CheckOn에서 당신의 쇼핑유형을 확인하세요!</p>
     {% for product in products.all %}
-        <img src="{{ product.image.url }}">
-        <h4> {{product.name}} </h4>
+    <img src="{{ product.image.url }}">
+    <h4> {{product.name}} </h4>
     {% endfor %}
 
     {% if user.is_authenticated %}
     <ul class="index">
-    <li><a href="{% url 'shopping' 1 %}">← 쇼핑하러가기</a></li>
-    <li><a href="{% url 'mypage' user.pk %}">내 유형 보러가기 →</a></li>
+      <li><a href="{% url 'shopping' 1 %}">← 쇼핑하러가기</a></li>
+      <li><a href="{% url 'mypage' %}">내 유형 보러가기 →</a></li>
     </ul>
     {% else %}
     <ul class="index">
-    <li><a href="{% url 'shopping' 1 %}">← 쇼핑하러가기</a></li>
-    <li><a href="{% url 'login' %}">내 유형 보러가기 →</a></li>
+      <li><a href="{% url 'shopping' 1 %}">← 쇼핑하러가기</a></li>
+      <li><a href="{% url 'login' %}">내 유형 보러가기 →</a></li>
     </ul>
     {% endif %}
   </div>
+</div>
 
 {% endblock content %}

@@ -4,7 +4,6 @@
 {% block link %}{% static 'css/cart.css' %}{% endblock %}
 
 {% block content %}
-{% if user == request.user %}
 <form action="{% url 'delete_cart' user.pk %}" method="POST">
     <div class="order-list">
         <table>
@@ -69,5 +68,11 @@
 
 
 </div>
-{% endif %}
+
+<footer>
+    <div class="footer">
+        Copyright ⓒ 멋쟁이사자처럼 8기 팀 2DX2. All Rights Reserved.
+    </div>
+</footer>
+
 {% endblock content %}

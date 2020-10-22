@@ -11,10 +11,16 @@ body {
     width: 100%;
     height: 100%;
     font-family: 'S-CoreDream-3Light', 'Kumbh Sans', sans-serif;
+
+    /* 스크롤 삭제 */
+    -ms-overflow-style: none;
 }
-.contianer{
-    padding-bottom:100px;/* footer height */
+
+/* 스크롤 삭제 */
+::-webkit-scrollbar {
+    display: none;
 }
+
 
 a:link {
     color: black;
@@ -26,6 +32,16 @@ a:visited {
     text-decoration: none;
 }
 
+header {
+    width: 100%;
+    height: 60px;
+    margin: 0;
+}
+
+.wrapper {
+    position: relative;
+    min-height: 100%;
+}
 
 /* Navbar */
 
@@ -36,7 +52,7 @@ a:visited {
 
     /* 컬러 및 투명도 설정 */
     background-color: rgb(255, 255, 255);
-    box-shadow:  3px 3px 10px 3px  rgba(238, 50, 36, 0.15);
+    box-shadow: 3px 3px 10px 3px rgba(238, 50, 36, 0.15);
     /* border-bottom: solid rgba(131, 119, 236, 0.3) 1px; */
 
     /* 위치 설정 */
@@ -47,14 +63,12 @@ a:visited {
 
 }
 
-
-.logo{
+.logo {
     display: inline-block;
     position: absolute;
-    float: left;
     padding: 0px;
     text-align: center;
-    vertical-align:middle;
+    vertical-align: middle;
     margin-top: 10px;
     margin-left: 20px;
     width: 30px;
@@ -62,12 +76,11 @@ a:visited {
     line-height: 60px;
 }
 
-#nav-right{
+#nav-right {
     font-smooth: always;
     display: inline-block;
     width: 310px;
     position: absolute;
-    float: right;
     padding: 0px;
     margin: 0px;
     right: 0px;
@@ -78,7 +91,7 @@ a:visited {
     cursor: pointer;
 }
 
-#nav-right li{
+#nav-right li {
     list-style: none;
     display: inline-block;
     vertical-align: middle;
@@ -91,7 +104,7 @@ a:visited {
     margin-right: 0px;
 }
 
-ul{
+ul {
     list-style-type: disc;
     margin-block-start: 1em;
     margin-block-end: 1em;
@@ -100,23 +113,24 @@ ul{
     padding-inline-start: 40px;
 }
 
-.user{
+.user {
 
     text-align: center;
-    vertical-align:middle;
+    vertical-align: middle;
     width: 30px;
     height: 30px;
     line-height: 60px;
 }
 
 
-.footer{
+.footer {
     width: 100%;
     height: 100px;
+    margin-top: -10px;
     background-color: rgba(0, 0, 0, 0.2);
-    float: right;
     text-align: center;
     line-height: 100px;
     vertical-align: middle;
     color: rgb(37, 37, 37);
+
 }
