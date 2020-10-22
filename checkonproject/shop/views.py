@@ -134,20 +134,21 @@ def delete_cart(request, product_id):
     user = request.user
     cart = Cart.objects.filter(user=user)
     quantity = 0
-
+    
     if request.method == 'POST':
-        pk = int(request.POST.get('product'))
-        product = Product.objects.get(pk=pk)
-        for i in cart:
-            if i.products == product :
-                quantity =  i.quantity
-        if quantity > 0 :
-            product = Product.objects.filter(pk=pk)
-            cart = Cart.objects.filter(user=user, products__in=product)
-            cart.delete()
+        try:
+            pk = request.POST.get('product')
+            product = Product.objects.get(pk=pk)
+            for i in cart:
+                if i.products == product :
+                    quantity =  i.quantity
+            if quantity > 0 :
+                product = Product.objects.filter(pk=pk)
+                cart = Cart.objects.filter(user=user, products__in=product)
+                cart.delete()
+                return redirect('cart', user.pk)
+        except:
             return redirect('cart', user.pk)
-
-
 
 @login_required
 def cart_or_buy(request, product_id):
