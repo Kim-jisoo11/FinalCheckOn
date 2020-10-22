@@ -24,6 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('shopping/<int:category_id>/', views.show_category, name='shopping'),
+    path('accounts/login/', accounts.views.login, name ='login'),
     path('login/',accounts.views.login, name = 'login'),
     path('logout/',accounts.views.logout, name = 'logout'),
     path('signup/',accounts.views.signup, name = 'signup'),
@@ -31,6 +32,18 @@ urlpatterns = [
     path('cart/', views.cart, name='cart'),
     path('delete/<int:product_id>/', views.delete_cart, name='delete_cart'),
     path('mypage/', views.mypage, name = 'mypage'),
+    path('shopping/1/login/', accounts.views.login, name ='login'),
+    path('shopping/2/login/', accounts.views.login, name ='login'),
+    path('shopping/3/login/', accounts.views.login, name ='login'),
+    path('shopping/4/login/', accounts.views.login, name ='login'),
+    path('shopping/5/login/', accounts.views.login, name ='login'),
+    path('shopping/6/login/', accounts.views.login, name ='login'),
+    path('shopping/7/login/', accounts.views.login, name ='login'),
+    path('shopping/8/login/', accounts.views.login, name ='login'),
+    path('shopping/9/login/', accounts.views.login, name ='login'),
+    path('shopping/10/login/', accounts.views.login, name ='login'),
+    path('shopping/11/login/', accounts.views.login, name ='login'),
+
 
 
     

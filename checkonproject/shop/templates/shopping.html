@@ -44,11 +44,14 @@
             <!-- 상품 주문 버튼-->
             <form action="{% url 'cart_or_buy' post.id %}" , method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
-                {% if user.is_authenticated %}
+                
                 <p class = "form-order">수량
                     {% if post.quantity > 0 %}
                     <input type="number" name="quantity" min="0" max="10" />
-                    <button class ="button_mybtn"  type="submit" name="add_cart" value="add_cart"> 주문하기 </button></p>
+                    {% if user.is_authenticated %}
+                    <button  class ="button_mybtn"  type="submit"  name="add_cart" value="add_cart" onClick="alertOK()"> 주문하기 </button></p>
+                    {% else %}
+                    <button class = "button_mybtn" type ="submit" onClick="alertConfirm();location.href='login';"> 주문하기 </button></p>
                 {% endif %}
                 {% endif %}
             </form>
@@ -85,8 +88,14 @@
 
 <script>
     function alertConfirm() {
-      var alertToVisiter = alert('주문되었습니다.');
+      var alertToVisiter = alert('로그인하세요');
       event.preventDefault();
+      
+    }
+    function alertOK(){
+        var alertToVisiter = alert('주문되었습니다');
+        frm.method ="POST";
+        frm.submit();
     }
 </script>
     <footer>
