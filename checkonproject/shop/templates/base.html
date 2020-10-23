@@ -7,6 +7,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>{% block title%}{% endblock %}</title>
+  <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+  <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
   <!-- Css static-->
   <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
   <link rel="stylesheet" type="text/css" href="{% block link %} {% endblock %}">
@@ -20,7 +22,7 @@
       <div class="nav">
 
         <a class="logo" href="{%url 'index'%}" style="font-family: netmarbleB;">
-          <img src="{% static 'img/logo.png' %}" width="30" height="30" alt="logo"></a>
+          <img src="{% static 'img/logo.svg' %}" width="50" height="30" alt="logo"></a>
 
         <ul id="nav-right">
 
