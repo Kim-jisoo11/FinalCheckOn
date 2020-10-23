@@ -1,13 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}체크온{% endblock %}
+{% block title %}메인{% endblock %}
 
 {% block link %}{% static 'css/index.css' %}{% endblock %}
 
 {% block content %}
 <div class="container">
+  <div class="mainimg"><img src="{% static 'img/main.gif' %}" alt="main-img"></div>
   <div class="index-container">
-    <p class="title">CheckOn에서 당신의 쇼핑유형을 확인하세요!</p>
+    <p class="title">체크온에서 당신의 쇼핑유형을 확인하세요!</p>
     {% for product in products.all %}
     <img src="{{ product.image.url }}">
     <h4> {{product.name}} </h4>
