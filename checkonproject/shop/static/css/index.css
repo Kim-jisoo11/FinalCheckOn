@@ -1,14 +1,15 @@
 body {
     text-align: center;
-    background-color:rgb(255, 216, 213);
-    
+    background-color:rgb(255, 255, 255);  
 }
 
 
 .title{
-    font-size: 2rem;
+    font-family: S-CoreDream-5Medium;
+    font-size: 2.5rem;
     margin: 0;
     margin-bottom: 30px;
+    color: rgb(255, 124, 115);
 }
 
 
@@ -33,9 +34,8 @@ body {
     display: inline-block;
     text-align: center;
     vertical-align: middle;
-    color: rgb(218, 41, 28);
     margin-right: 50px;
-    font-size: 1rem;
+    font-size: 1.3rem;
 }
 
 .index li:last-child {

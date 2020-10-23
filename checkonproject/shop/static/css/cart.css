@@ -1,36 +1,77 @@
-.order-list{
-    margin-top: 150px;
-    
-}
-table {
-    border-collapse: collapse;
-    width: 90%;
-    text-align: center;
-    margin: auto; 
-    font-family: 'S-CoreDream-3Light';
-    
+.order-list {
+    margin-top: 5%;
+
 }
 
-td,th {
-    border-bottom: 1px solid  rgba(238, 50, 36, 0.2);  
+table {
+    width: 70%;
     text-align: center;
+    margin: auto;
+    font-family: 'S-CoreDream-3Light';
+    border-collapse: separate;
+    border-spacing: 0;
+
+}
+
+tr th,
+tr td {
+    border-bottom: 1px solid rgb(255, 206, 203);
     padding: 10px;
 }
 
-th{
-    background-color:  rgba(238, 50, 36, 0.2);
+tr th:first-child,
+tr td:first-child {
+    border-left: 1px solid rgb(255, 206, 203);
 }
 
-p{
+tr th:last-child,
+tr td:last-child {
+    border-right: 1px solid rgb(255, 206, 203);
+}
+
+tr th {
+    background: rgb(255, 206, 203);
+    border-top: 1px solid rgb(255, 206, 203);
     text-align: center;
+}
+
+tr:first-child th:first-child {
+    border-top-left-radius: 8px;
+}
+
+tr:first-child th:last-child {
+    border-top-right-radius: 8px;
+}
+
+tr:last-child td:first-child {
+    border-bottom-left-radius: 8px;
+}
+
+tr:last-child td:last-child {
+    border-bottom-right-radius: 8px;
+}
+
+p {
+    text-align: center;
+}
+
+.img {
+    align-items: center;
 }
 
 .table-img {
     width: 100px;
     height: 100px;
+    border-radius: 8px;
 }
 
-@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+.totalprice {
+    margin: 0 auto;
+    width: 70%;
+    border-radius: 8px;
+    padding: 2rem 0;
+    background-color: rgb(255, 206, 203);
+}
 
 .preserve-3d {
     transform-style: preserve-3d;
@@ -61,10 +102,10 @@ p{
     left: 50%;
     margin-top: 20px;
     margin-left: -100px;
-    margin-bottom: 20px;
+    margin-bottom: 10%;
     width: 200px;
     height: 50px;
-    box-shadow:  3px 2px 6px 2px  rgba(238, 50, 36, 0.2);
+    box-shadow: 3px 2px 6px 2px rgba(238, 50, 36, 0.2);
     text-align: center;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -77,11 +118,9 @@ p{
     cursor: pointer;
 }
 
-/* ### ### ### 09 */
 .mybtn {
-    color: rgb(218, 41, 28);
+    color: rgb(255, 124, 115);
     background-color: #ffffff;
-    /* border: rgb(218, 41, 28) solid 1px; */
     padding: 10px;
     transition: all 0.1s ease;
     -webkit-transition: all 0.1s ease;
@@ -90,7 +129,7 @@ p{
 
 .mybtn:hover {
     color: #ffffff;
-    background-color: rgb(218, 41, 28);
+    background-color: rgb(255, 124, 115);
     animation: b09_electric_blinkIn 0.1s step-end 0 2;
     -webkit-animation: b09_electric_blinkIn 0.1s step-end 0 2;
     -moz-animation: b09_electric_blinkIn 0.1s step-end 0 2;
@@ -100,26 +139,29 @@ p{
 }
 
 @-webkit-keyframes b09_electric_blinkIn {
+
     from,
     to {
         background-color: #f8f8f8;
-        color:  rgb(218, 41, 28);
+        color: rgb(255, 124, 115);
     }
+
     50% {
         background-color: #ffffff;
-        color: rgb(218, 41, 28);
+        color: rgb(255, 124, 115);
     }
 }
 
 @-moz-keyframes b09_electric_blinkIn {
+
     from,
     to {
         background-color: #f8f8f8;
-        color: rgb(218, 41, 28);
+        color: rgb(255, 124, 115);
     }
+
     50% {
         background-color: #ffffff;
-        color: rgb(218, 41, 28);
+        color: rgb(255, 124, 115);
     }
 }
- 

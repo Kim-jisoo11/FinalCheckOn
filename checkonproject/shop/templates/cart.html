@@ -4,6 +4,7 @@
 {% block link %}{% static 'css/cart.css' %}{% endblock %}
 
 {% block content %}
+<h1>주문내역</h1>
 <form action="{% url 'delete_cart' user.pk %}" method="POST">
     <div class="order-list">
         <table>
@@ -56,7 +57,6 @@
                             value="{{ product.products.id }}">
                     </td>
                 </tr>
-
                 {% endfor %}
                 {% endif %}
             </tbody>
@@ -64,7 +64,7 @@
 
     </div>
     <br>
-    <p class="price">전체 금액:{{cart.totalAmount}} 원</p>
+    <p class="totalprice">전체 금액 : {{cart.totalAmount}}원</p>
     <br>
         
         {% if cart.quantity == 0 %}

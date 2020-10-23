@@ -26,27 +26,12 @@
     font-style: normal;
 }
 
-
-@font-face {
-    font-family: 'S-CoreDream-2ExtraLight';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-2ExtraLight.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'S-CoreDream-1Thin';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-1Thin.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
 html,
 body {
     margin: 0;
     width: 100%;
     height: 100%;
-    font-family: 'S-CoreDream-3Light', 'Kumbh Sans', sans-serif;
+    font-family: 'S-CoreDream-3Light';
 
     /* 스크롤 삭제 */
     -ms-overflow-style: none;
@@ -57,14 +42,21 @@ body {
     display: none;
 }
 
+h1{
+    font-family: 'S-CoreDream-5Medium';
+    color: rgb(255, 124, 115);
+    text-align: center;
+    margin: 5% 0 2% 0;
+    font-size: 3.5rem;
+}
 
 a:link {
-    color: black;
+    color:rgb(53, 53, 53);
     text-decoration: none;
 }
 
 a:visited {
-    color: black;
+    color: rgb(53, 53, 53);
     text-decoration: none;
 }
 
@@ -120,6 +112,7 @@ header {
     margin: 0px;
     right: 0px;
     line-height: 60px;
+    text-align: center;
 }
 
 #navright :hover {
@@ -157,15 +150,13 @@ ul {
     line-height: 60px;
 }
 
-
 .footer {
     width: 100%;
-    height: 100px;
+    height: 200px;
     margin-top: -10px;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color:rgb(255, 206, 203);
     text-align: center;
-    line-height: 100px;
+    line-height: 200px;
     vertical-align: middle;
-    color: rgb(37, 37, 37);
-
+    color: rgb(255, 255, 255);
 }

@@ -8,106 +8,105 @@
 
 
 {% block content %}
+<h1>쇼핑</h1>
+    <div class="shopping_all">
+        <br>
+        <ul class="category_bar">
 
-<body>
+            {% for categories in categories %}
+            {% if category == categories %}
+            <li class="category_list"><a href="{% url 'shopping' categories.id %}"
+                    style="background-color: rgb(255, 124, 115); color:white; border-radius:30px;">{{categories}}</a>
+            </li>
+            {% else %}
+            <li class="category_list"><a href="{% url 'shopping' categories.id %}">{{categories}}</a></li>
+            {% endif %}
+            {% endfor %}
 
-    <div class = "shopping_all">
-    <br>
-    <ul class="category_bar">
-        
-        {% for categories in categories %}
-        {% if category == categories %}
-        <li class="category_list"><a href="{% url 'shopping' categories.id %}" style="background-color: #c93b2b;" >&nbsp;&nbsp;{{categories}}&nbsp;&nbsp;</a></li>
-        {% else %}
-        <li class="category_list"><a href="{% url 'shopping' categories.id %}">&nbsp;&nbsp;{{categories}}&nbsp;&nbsp;</a></li>
-        {% endif %}
-        {% endfor %}
-
-    </ul>
-    <br>
+        </ul>
+        <br>
 
 
-    <!-- 상품 내역 -->
+        <!-- 상품 내역 -->
+        <div class="product-align">
+            <div class="product-container">
+                {% for post in posts %}
+                <div class="product-card">
+                    <!-- 상품 이미지-->
+                    <div class="product-img">
+                        {% if post.image %}
+                        <img src="{{ post.image.url }}">
+                        {% endif %}
+                    </div>
 
-    <div class="product-container">
-        {% for post in posts %}
-        <div class="product-card">
-            <!-- 상품 이미지-->
-            <div class = "product-img">
-                {% if post.image %}
-                <img src="{{ post.image.url }}">
-                {% endif %}
+                    <p class="product_name">{{  post.name  }}</p>
+                    <p class="product_price"> {{  post.price  }}원</p>
+                    <!-- 상품 주문 버튼-->
+                    <form action="{% url 'cart_or_buy' post.id %}" , method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <p class="form-order">수량
+                            {% if post.quantity > 0 %}
+                            <input type="number" name="quantity" min="1" max="10" />
+                            {% if user.is_authenticated %}
+                            <button class="button_mybtn" type="submit" name="add_cart" value="add_cart"
+                                onClick="alertOK()">주문하기</button></p>
+                        {% else %}
+                        <button class="button_mybtn" type="submit" onClick="alertConfirm();location.href='login';"> 주문하기
+                        </button></p>
+                        {% endif %}
+                        {% endif %}
+                    </form>
+                </div>
+                {% endfor %}
             </div>
-            
-            <p class="product_name">{{  post.name  }}</p>
-            <p class="product_price"> {{  post.price  }}원</p>
-            <!-- 상품 주문 버튼-->
-            <form action="{% url 'cart_or_buy' post.id %}" , method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                
-                <p class = "form-order">수량
-                    {% if post.quantity > 0 %}
-                    <input type="number" name="quantity" min="1" max="10" />
-                    {% if user.is_authenticated %}
-                    <button  class ="button_mybtn"  type="submit"  name="add_cart" value="add_cart" onClick="alertOK()"> 주문하기 </button></p>
-                    {% else %}
-                    <button class = "button_mybtn" type ="submit" onClick="alertConfirm();location.href='login';"> 주문하기 </button></p>
+        </div>
+        <br>
+        <br>
+        <div class="pagenation">
+            <!-- pagenation nav -->
+            <div class="container">
+                {# first Previous #}
+                {% if posts.has_previous %}
+
+                <button type="button" class="btn btn-light"><a href="?page={{posts.previous_page_number}}">Previous
+                    </a></button>
                 {% endif %}
+                {# 3 of 4 #}
+                <span>{{posts.number}}</span>
+                <span>of</span>
+                <span>{{posts.paginator.num_pages}}</span>
+                {# Next Last #}
+                {% if posts.has_next %}
+                <button type="button" class="btn btn-light"><a href="?page={{posts.next_page_number}}"> Next
+                    </a></button>
+
                 {% endif %}
-            </form>
+                <br>
+                <br>
 
-
+            </div>
         </div>
-        {% endfor %}
+
+        <script>
+            function alertConfirm() {
+                var alertToVisiter = alert('로그인하세요');
+                event.preventDefault();
+
+            }
+
+            function alertOK() {
+                var alertToVisiter = alert('주문되었습니다');
+                frm.method = "POST";
+                frm.submit();
+            }
+        </script>
+        <footer>
+            <div class="footer">
+                Copyright ⓒ 멋쟁이사자처럼 8기 팀 2DX2. All Rights Reserved.
+            </div>
+        </footer>
+
+
     </div>
-    <br>
-    <br>
-    <div class="pagi">
-        <!-- pagenation nav -->
-        <div class="container">
-            {# first Previous #}
-            {% if posts.has_previous %}
-            
-            <button type="button" class="btn btn-light"><a href="?page={{posts.previous_page_number}}">Previous
-                </a></button>
-            {% endif %}
-            {# 3 of 4 #}
-            <span>{{posts.number}}</span>
-            <span>of</span>
-            <span>{{posts.paginator.num_pages}}</span>
-            {# Next Last #}
-            {% if posts.has_next %}
-            <button type="button" class="btn btn-light"><a href="?page={{posts.next_page_number}}"> Next </a></button>
-            
-            {% endif %}
-            <br>
-            <br>
-
-        </div>
-    </div>
-
-<script>
-    function alertConfirm() {
-      var alertToVisiter = alert('로그인하세요');
-      event.preventDefault();
-      
-    }
-    function alertOK(){
-        var alertToVisiter = alert('주문되었습니다');
-        frm.method ="POST";
-        frm.submit();
-    }
-</script>
-    <footer>
-        <div class="footer">
-            Copyright ⓒ 멋쟁이사자처럼 8기 팀 2DX2. All Rights Reserved.
-        </div>
-    </footer>
-
-    
-</div>
-{% endblock content %}
-</body>
-
-
-
+    {% endblock content %}
