@@ -38,8 +38,6 @@ def cart(request):
         i.products.price = i.products.price * i.quantity
         total_prices = total_prices + i.products.price    
     cart.totalAmount = total_prices
-    
-    
 
     # 카테고리별 산 상품 종류 합계
     isBought = {}
@@ -58,12 +56,11 @@ def cart(request):
 
     # 카테고리 통계
     countProduct = {}
+    context = {'cart': cart, 'categories': categories, 'posts' : posts, 'totalSum' : totalSum}
     for i in cart:
         countProduct[i.category_id] = isBought.get(i.category_id) / totalSum * 100
 
     for key, value in countProduct.items():
-    
-
         context = {'cart': cart, 'categories': categories, 'posts' : posts, 'countProduct' : countProduct, 'totalSum' : totalSum}
 
     return render(request, 'cart.html', context)
