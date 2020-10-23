@@ -81,7 +81,6 @@ header {
     /* 컬러 및 투명도 설정 */
     background-color: rgb(255, 255, 255);
     box-shadow: 3px 3px 10px 3px rgba(238, 50, 36, 0.15);
-    /* border-bottom: solid rgba(131, 119, 236, 0.3) 1px; */
 
     /* 위치 설정 */
     display: flex;
@@ -159,4 +158,8 @@ ul {
     line-height: 200px;
     vertical-align: middle;
     color: rgb(255, 255, 255);
+}
+
+button:focus {
+	outline: none;
 }

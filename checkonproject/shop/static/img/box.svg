@@ -1,1 +1,26 @@
-<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 700"><defs><style>.cls-1{fill:#fff;stroke:#ffa5b6;stroke-width:10px;}.cls-1,.cls-2{stroke-linecap:round;stroke-linejoin:round;}.cls-2{fill:none;stroke:#da291c;stroke-width:50px;}.cls-3{fill:#da291c;}</style></defs><title>box</title><polygon class="cls-1" points="356.5 421.45 356.5 620.43 199.1 538.42 199.1 355.16 356.5 421.45"/><path class="cls-1" d="M357,421.45l-156.92-68.4,153.48-55.42a8.06,8.06,0,0,1,5.46,0l155.38,55.43Z"/><polygon class="cls-1" points="513.42 538.42 513.42 353.05 356.02 421.45 356.02 620.43 513.42 538.42"/><polygon class="cls-1" points="356.02 421.56 408.56 481.65 555.58 403.27 514.37 353.05 356.02 421.56"/><polygon class="cls-1" points="357.29 419.45 304.75 479.54 157.73 403.27 200.05 353.05 357.29 419.45"/><line class="cls-1" x1="132.85" y1="227.31" x2="182.28" y2="282.76"/><line class="cls-1" x1="128.03" y1="296.02" x2="189.51" y2="318.92"/><line class="cls-1" x1="219.65" y1="211.63" x2="238.93" y2="283.96"/><line class="cls-1" x1="568.03" y1="227.31" x2="518.6" y2="282.76"/><line class="cls-1" x1="572.85" y1="296.02" x2="511.37" y2="318.92"/><line class="cls-1" x1="481.23" y1="211.63" x2="461.95" y2="283.96"/><path class="cls-2" d="M291.81,170s-7.45-51.33,41.6-64.71c42.56-11.61,98.7,12.3,88.29,74-9,53.17-59.39,44.6-64.57,59.12s-4,44.33-4,44.33"/><circle class="cls-3" cx="352.76" cy="350.83" r="27.85"/></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_2_1_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 700 700" style="enable-background:new 0 0 700 700;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#FFFFFF;stroke:#FFA5B6;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;}
+	.st1{fill:#FFA5B6;stroke:#FFA5B6;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;}
+	.st2{fill:none;stroke:#FFA5B6;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;}
+	.st3{fill:none;stroke:#DA291C;stroke-width:50;stroke-linecap:round;stroke-linejoin:round;}
+	.st4{fill:#DA291C;}
+</style>
+<title>box</title>
+<polygon class="st0" points="356.5,421.5 356.5,620.4 199.1,538.4 199.1,355.2 "/>
+<path class="st1" d="M357,421.5l-156.9-68.4l153.5-55.4c1.8-0.6,3.7-0.6,5.5,0l155.4,55.4L357,421.5z"/>
+<polygon class="st0" points="513.4,538.4 513.4,353 356,421.5 356,620.4 "/>
+<polygon class="st0" points="356,421.6 408.6,481.6 555.6,403.3 514.4,353 "/>
+<polygon class="st0" points="357.3,419.5 304.8,479.5 157.7,403.3 200.1,353 "/>
+<line class="st2" x1="132.9" y1="227.3" x2="182.3" y2="282.8"/>
+<line class="st2" x1="128" y1="296" x2="189.5" y2="318.9"/>
+<line class="st2" x1="219.6" y1="211.6" x2="238.9" y2="284"/>
+<line class="st2" x1="568" y1="227.3" x2="518.6" y2="282.8"/>
+<line class="st2" x1="572.8" y1="296" x2="511.4" y2="318.9"/>
+<line class="st2" x1="481.2" y1="211.6" x2="462" y2="284"/>
+<path class="st3" d="M291.8,170c0,0-7.5-51.3,41.6-64.7c42.6-11.6,98.7,12.3,88.3,74c-9,53.2-59.4,44.6-64.6,59.1s-4,44.3-4,44.3"/>
+<circle class="st4" cx="352.8" cy="350.8" r="27.9"/>
+</svg>
