@@ -10,9 +10,16 @@ body {
     margin-bottom: 1.5%;
     color: rgb(255, 124, 115);
 }
+.mainimg{
+    position: fixed;
+    top:5%;
+    width: 100%;
 
+}
 .bottomimg{
+    position: fixed;
     bottom:0;
+    width: 100%;
 }
 
 .index-container{
@@ -21,8 +28,8 @@ body {
     margin: 0px;
     margin-top: 5%;
     text-align: center;
-    position: absolute;
-    top:0;
+    position: fixed;
+    top:38%;
     left: 0%;
     
 }
@@ -43,8 +50,4 @@ body {
 
 .index li:last-child {
     margin-right: 0px;
-}
-
-.title-container{
-    margin: 13% 0;
 }
