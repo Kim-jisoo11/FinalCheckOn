@@ -8,23 +8,26 @@
 <div class="container">
   <div class="index-container">
     <div class="mainimg"><img src="{% static 'img/main.gif' %}" alt="main-img"></div>
-    <p class="title">체크온에서 당신의 쇼핑유형을 체크하세요!</p>
-    {% for product in products.all %}
-    <img src="{{ product.image.url }}">
-    <h4> {{product.name}} </h4>
-    {% endfor %}
+    <div class="title-container">
+      <p class="title">체크온에서 당신의 쇼핑유형을 체크하세요!</p>
+      {% for product in products.all %}
+      <img src="{{ product.image.url }}">
+      <h4> {{product.name}} </h4>
+      {% endfor %}
 
-    {% if user.is_authenticated %}
-    <ul class="index">
-      <li class="text"><a href="{% url 'shopping' 1 %}">← 쇼핑하러가기</a></li>
-      <li class="text"><a href="{% url 'mypage' %}">내 유형 보러가기 →</a></li>
-    </ul>
-    {% else %}
-    <ul class="index">
-      <li class="text"><a href="{% url 'shopping' 1 %}">← 쇼핑하러가기</a></li>
-      <li class="text"><a href="{% url 'login' %}">내 유형 보러가기 →</a></li>
-    </ul>
-    {% endif %}
+      {% if user.is_authenticated %}
+      <ul class="index">
+        <li class="text"><a href="{% url 'shopping' 1 %}">← 쇼핑하러가기</a></li>
+        <li class="text"><a href="{% url 'mypage' %}">내 유형 보러가기 →</a></li>
+      </ul>
+      {% else %}
+      <ul class="index">
+        <li class="text"><a href="{% url 'shopping' 1 %}">← 쇼핑하러가기</a></li>
+        <li class="text"><a href="{% url 'login' %}">내 유형 보러가기 →</a></li>
+      </ul>
+      {% endif %}
+    </div>
+    <div class="bottomimg"><img src="{% static 'img/main-reverse.gif' %}" alt="main-img"></div>
   </div>
 </div>
 
