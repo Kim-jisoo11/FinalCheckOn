@@ -39,7 +39,7 @@
 <p class="title">{{user.username}}님의 유형은 "{{ title }}"</p>
 
 
-<p class="title">카테고리 별 구매 비율</p>
+<p class="title">TOP 3</p>
 
 <section class="graph">
     {% for key, value in print_category.items %}
@@ -54,6 +54,7 @@
     {% endfor %}
 </section>
 
+<br>
 <button class="button_base mybtn" onClick="Circlle('.round');">다시 확인</button>
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -66,7 +67,7 @@
                 color: '#ff5c5c'
             }
         }).on('circle-animation-progress', function (event, progress, stepValue) {
-            $(this).find('strong').text(String(stepValue.toFixed(2)).substr(2) + '%');
+            $(this).find('strong').text((stepValue*100).toFixed(0) + '%');
         });
     };
 

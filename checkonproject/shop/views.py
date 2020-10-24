@@ -77,8 +77,6 @@ def mypage(request):
         i.products.price = i.products.price * i.quantity
         total_prices = total_prices + i.products.price    
     cart.totalAmount = total_prices
- 
-    
 
     # 카테고리별 산 상품 종류 합계
     isBought = {}
@@ -95,31 +93,39 @@ def mypage(request):
     for key, value in isBought.items():
         totalSum = totalSum + value
         
-
     # 카테고리 통계
     countProduct = {}
     def productCategory(x):
         return {1:"과일, 견과", 2:"수산", 3:"정육, 계란", 4:"채소", 5:"쌀, 잡곡", 6:"유제품", 7:"반찬, 간편식", 8:"액체류(생수, 음료, 주류)", 9:"과자, 빵", 10:"즉석조리(라면, 통조림, 소스장류)", 11:"건강식품"}[x]
+        # 과일, 견과  : 14.28 형식으로 출력하기 위함
+        # productCategory(i.caegory_id) = "과일, 견과"
+        # print_category = {"과일, 견과":14.28...}  
+    
+    # sorting-> value값 기준으로 내림차순 정렬
     print_category = {}
     for i in cart:
         countProduct[i.category_id] = isBought.get(i.category_id) / totalSum 
-
-        print_category[productCategory(i.category_id)] = countProduct.get(i.category_id)
-        # 과일, 견과  : 14.28 형식으로 출력하기 위함
-        # productCategory(i.caegory_id) = "과일, 견과"
-        # print_category = {"과일, 견과":14.28...}
-
-  
-    
-    
-    
-    # sorting-> value값 기준으로 내림차순 정렬
     sortProductTuple = sorted(countProduct.items(), key=operator.itemgetter(1), reverse=True)
+
+    # 한개도 구매하지 않았을 때 구매하라는 페이지 뜨게 try-except
     try:
         firstrank = sortProductTuple[0][0]
+        print_category[productCategory(firstrank)] = countProduct.get(firstrank)
     except:
         return render(request, 'mypageExcept.html')
-    print(type(firstrank))
+        
+    # 카테고리 개수별로 확인해서 top3 순위를 print_category에 넣기 
+    if len(isBought) == 2:
+        secondrank = sortProductTuple[1][0]
+        print_category[productCategory(secondrank)] = countProduct.get(secondrank)
+    
+    elif len(isBought) >= 3:
+        secondrank = sortProductTuple[1][0]
+        print_category[productCategory(secondrank)] = countProduct.get(secondrank)
+        thirdrank = sortProductTuple[2][0]
+        print_category[productCategory(thirdrank)] = countProduct.get(thirdrank)
+
+
     
     # 타이틀 분류 (switch문과 비슷)
     def f(x):

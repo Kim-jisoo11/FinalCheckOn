@@ -126,7 +126,6 @@ p{
 
 #circleBar {
     margin-top: 10px;
-    /* margin-left: 5rem; */
     text-align: center;
     display: inline-block;
 }
@@ -167,12 +166,3 @@ p{
 section button:hover {
     background-color: #ff5c5c;
 }
-
-/* h5 {
-    font-family: 'S-CoreDream-5Medium';
-    color: rgb(255, 124, 115);
-    text-align: center;
-    margin: 5% 0 2% 0;
-    font-size: 3.5rem;
-}
-  */
