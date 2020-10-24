@@ -7,7 +7,7 @@ p{
 .title {
     font-size: 2rem;
     text-align: center;
-    margin: 0px 0px 10% 0px;
+    margin: 0px 0px 15% 0px;
 }
 
 .imgbox {
@@ -25,7 +25,7 @@ p{
 }
 
 .sub{
-    font-size: 1.5rem
+    font-size: 2rem
 }
 
 .preserve-3d {
@@ -77,8 +77,8 @@ p{
 .mybtn {
     color: rgb(255, 124, 115);
     background-color: #ffffff;
-    /* border: rgb(218, 41, 28) solid 1px; */
     padding: 10px;
+    margin-top: 1.5%;
     transition: all 0.1s ease;
     -webkit-transition: all 0.1s ease;
     -moz-transition: all 0.1s ease;
@@ -119,24 +119,30 @@ p{
     }
 }
 
+.subtitle {
+    font-size: 2rem;
+    text-align: center;
+    margin: 0px 0px 2% 0px;
+}
 
 .graph {
     text-align: center;
+    margin-bottom: 2%;
 }
 
 #circleBar {
-    margin-top: 10px;
+    margin: 10px 30px;
     text-align: center;
     display: inline-block;
 }
 
 
 #circleBar .round {
-    min-height: 255px;
+    min-height: 250px;
     margin-top: 30px;
     position: relative;
     margin-bottom: 20px;
-    width: 300px;
+    max-width: 400px;
 }
 
 #circleBar .round strong {
@@ -146,13 +152,13 @@ p{
     margin-top: -50px;
     transform: translate(-50%);
     font-size: 40px;
-    color: palevioletred;
+    color:rgb(255, 124, 115);
     font-weight: 100;
 }
 
 #circleBar span {
     display: block;
-    color: #999;
+    color: rgb(255, 124, 115);
     font-size: 17px;
     margin-top: 10px;
 }

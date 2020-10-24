@@ -38,13 +38,10 @@
 
 <p class="title">{{user.username}}님의 유형은 "{{ title }}"</p>
 
-
-<p class="title">TOP 3</p>
-
 <section class="graph">
     {% for key, value in print_category.items %}
     <section id="circleBar">
-            <div class="round" data-value="{{ value }}" data-size="200" data-thickness="12">
+            <div class="round" data-value="{{ value }}" data-size="250" data-thickness="18">
                 <strong></strong>
                 <span>
                     {{ key }}
@@ -54,7 +51,8 @@
     {% endfor %}
 </section>
 
-<br>
+<p class="subtitle">구매 TOP3</p>
+
 <button class="button_base mybtn" onClick="Circlle('.round');">다시 확인</button>
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -64,7 +62,7 @@
     function Circlle(el) {
         $(el).circleProgress({
             fill: {
-                color: '#ff5c5c'
+                color: 'rgb(255,255,255)'
             }
         }).on('circle-animation-progress', function (event, progress, stepValue) {
             $(this).find('strong').text((stepValue*100).toFixed(0) + '%');
@@ -82,10 +80,11 @@
 
     <br>
 
-    <p class="sub">{{ title }}들을 위한 랜덤박스가 준비되어 있어요!</p>
     <div class="youare">
         <img src="{% static 'img/box.svg' %}" width="40%" height="40%" alt="image">
     </div>
+    <br>
+    <p class="sub">{{ title }}들을 위한 랜덤박스가 준비되어 있어요!</p>
     <!-- 팝업 버튼-->
     <button class="button_base mybtn" type="submit" onclick="alertConfirm()">랜덤박스 신청하기</button>
 
