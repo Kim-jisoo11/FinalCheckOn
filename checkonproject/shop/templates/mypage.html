@@ -42,17 +42,16 @@
 <p class="title">카테고리 별 구매 비율</p>
 {% for key, value in print_category.items %}
 <section id="circleBar">
-    <div class="container">
-            <div class="round" data-value="{{ value }}" data-size="200" data-thickness="12">
-                <strong></strong>
-                <span>
-                    {{ key }}
-                </span>
-            </div>
+    <div class="round" data-value="{{ value }}" data-size="200" data-thickness="12">
+        <strong></strong>
+        <span>
+            {{ key }}
+        </span>
     </div>
 </section>
 {% endfor %}
 
+<br>
 <button class="button_base mybtn" onClick="Circlle('.round');">다시 확인</button>
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>

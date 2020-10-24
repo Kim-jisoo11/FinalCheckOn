@@ -123,6 +123,8 @@ p{
 #circleBar {
     margin-top: 180px;
     text-align: center;
+    width: 300px;
+    display: inline-block;
 }
 
 

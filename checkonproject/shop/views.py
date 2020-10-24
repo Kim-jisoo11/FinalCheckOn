@@ -100,26 +100,37 @@ def mypage(request):
     countProduct = {}
     def productCategory(x):
         return {1:"과일, 견과", 2:"수산", 3:"정육, 계란", 4:"채소", 5:"쌀, 잡곡", 6:"유제품", 7:"반찬, 간편식", 8:"액체류(생수, 음료, 주류)", 9:"과자, 빵", 10:"즉석조리(라면, 통조림, 소스장류)", 11:"건강식품"}[x]
-    print_category = {}
-    for i in cart:
-        countProduct[i.category_id] = isBought.get(i.category_id) / totalSum 
+    
+    # print_category = {}
+    # for i in cart:
+    #     countProduct[i.category_id] = isBought.get(i.category_id) / totalSum 
 
-        print_category[productCategory(i.category_id)] = countProduct.get(i.category_id)
+    #     print_category[productCategory(i.category_id)] = countProduct.get(i.category_id)
         # 과일, 견과  : 14.28 형식으로 출력하기 위함
         # productCategory(i.caegory_id) = "과일, 견과"
-        # print_category = {"과일, 견과":14.28...}
-
-  
+        # print_category = {"과일, 견과":14.28...}  
     
     
     
     # sorting-> value값 기준으로 내림차순 정렬
+
+    print_category = {}
+    for i in cart:
+        countProduct[i.category_id] = isBought.get(i.category_id) / totalSum 
+
     sortProductTuple = sorted(countProduct.items(), key=operator.itemgetter(1), reverse=True)
     try:
         firstrank = sortProductTuple[0][0]
+        print_category[productCategory(firstrank)] = countProduct.get(firstrank)
+        secondrank = sortProductTuple[1][0]
+        print_category[productCategory(secondrank)] = countProduct.get(secondrank)
+        thirdrank = sortProductTuple[2][0]
+        print_category[productCategory(thirdrank)] = countProduct.get(thirdrank)
     except:
         return render(request, 'mypageExcept.html')
     print(type(firstrank))
+
+
     
     # 타이틀 분류 (switch문과 비슷)
     def f(x):
