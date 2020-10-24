@@ -2,7 +2,9 @@
 {% load static %}
 {% block title %}마이페이지{% endblock title %}
 
-{% block link %}{% static 'css/mypage.css' %}{% endblock %}
+{% block link %}
+{% static 'css/mypage.css' %}
+{% endblock %}
 
 {% block content %}
 <h1>마이페이지</h1>
@@ -13,7 +15,7 @@
     {% elif firstrank == 2 %}
     <img class="myimg" src="{% static 'img/곰곰이.svg' %}" width="40%" height="40%" alt="image">
     {% elif firstrank == 3 %}
-    <img class="myimg" src="{% static 'img/고릴라.svg' %}" width="40%" height="40%" alt="image"> 
+    <img class="myimg" src="{% static 'img/고릴라.svg' %}" width="40%" height="40%" alt="image">
     {% elif firstrank == 4 %}
     <img class="myimg" src="{% static 'img/코끼리.svg' %}" width="40%" height="40%" alt="image">
     {% elif firstrank == 5 %}
@@ -36,19 +38,46 @@
 
 <p class="title">당신의 유형은 "{{ title }}"</p>
 
-<br>
-<p class="text">
+
+<p class="title">카테고리 별 구매 비율</p>
 {% for key, value in print_category.items %}
-{{ key }} : {{ value|floatformat:2}}
-<br>
+<section id="circleBar">
+    <div class="container">
+            <div class="round" data-value="{{ value }}" data-size="200" data-thickness="12">
+                <strong></strong>
+                <span>
+                    {{ key }}
+                </span>
+            </div>
+    </div>
+</section>
 {% endfor %}
-</p>
+
+<button class="button_base mybtn" onClick="Circlle('.round');">다시 확인</button>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-circle-progress/1.2.0/circle-progress.js"></script>
+
+<script>
+    function Circlle(el) {
+        $(el).circleProgress({
+            fill: {
+                color: '#ff5c5c'
+            }
+        }).on('circle-animation-progress', function (event, progress, stepValue) {
+            $(this).find('strong').text(String(stepValue.toFixed(2)).substr(2) + '%');
+        });
+    };
+
+
+    Circlle('.round');
+</script>
+
 
 
 <br>
 <div class="button">
-        <a href="{% url 'cart' %}"><button class="button_base mybtn" type="submit">구매내역</button></a>
-    
+
     <br>
 
     <p class="sub">{{ title }}들을 위한 랜덤박스가 준비되어 있어요!</p>
@@ -60,9 +89,9 @@
 
     <footer>
         <div class="footer">
-          Copyright ⓒ 멋쟁이사자처럼 8기 팀 2DX2. All Rights Reserved.
+            Copyright ⓒ 멋쟁이사자처럼 8기 팀 2DX2. All Rights Reserved.
         </div>
-      </footer>
+    </footer>
 
     <!-- html 제일 하단에 넣어주세요-->
     <script>

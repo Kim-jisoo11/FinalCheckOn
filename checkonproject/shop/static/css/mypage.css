@@ -118,4 +118,55 @@ p{
         color: rgb(255, 124, 115);
     }
 }
- 
+
+
+#circleBar {
+    margin-top: 180px;
+    text-align: center;
+}
+
+
+#circleBar .round {
+    min-height: 255px;
+    margin-top: 30px;
+    position: relative;
+    margin-bottom: 20px;
+    width: 300px;
+}
+
+#circleBar .round strong {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    transform: translate(-50%);
+    font-size: 40px;
+    color: palevioletred;
+    font-weight: 100;
+}
+
+#circleBar span {
+    display: block;
+    color: #999;
+    font-size: 17px;
+    margin-top: 10px;
+}
+
+#circleBar span i {
+    color: #ff5c5c;
+    font-size: 22px;
+    margin-right: 7px;
+}
+
+section button:hover {
+    background-color: #ff5c5c;
+}
+
+/* h5 {
+    font-family: 'S-CoreDream-5Medium';
+    color: rgb(255, 124, 115);
+    text-align: center;
+    margin: 5% 0 2% 0;
+    font-size: 3.5rem;
+}
+  */
