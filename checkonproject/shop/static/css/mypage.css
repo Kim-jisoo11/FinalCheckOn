@@ -120,9 +120,15 @@ p{
 }
 
 
-#circleBar {
-    margin-top: 180px;
+.graph {
     text-align: center;
+}
+
+#circleBar {
+    margin-top: 10px;
+    /* margin-left: 5rem; */
+    text-align: center;
+    display: inline-block;
 }
 
 

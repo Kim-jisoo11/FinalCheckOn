@@ -40,18 +40,19 @@
 
 
 <p class="title">카테고리 별 구매 비율</p>
-{% for key, value in print_category.items %}
-<section id="circleBar">
-    <div class="container">
+
+<section class="graph">
+    {% for key, value in print_category.items %}
+    <section id="circleBar">
             <div class="round" data-value="{{ value }}" data-size="200" data-thickness="12">
                 <strong></strong>
                 <span>
                     {{ key }}
                 </span>
             </div>
-    </div>
+    </section>
+    {% endfor %}
 </section>
-{% endfor %}
 
 <button class="button_base mybtn" onClick="Circlle('.round');">다시 확인</button>
 
