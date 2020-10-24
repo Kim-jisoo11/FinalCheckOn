@@ -6,8 +6,8 @@
 
 {% block content %}
 <div class="container">
+  <div class="mainimg"><img src="{% static 'img/main.gif' %}" alt="main-img"></div>
   <div class="index-container">
-    <div class="mainimg"><img src="{% static 'img/main.gif' %}" alt="main-img"></div>
     <p class="title">체크온에서 당신의 쇼핑유형을 체크하세요!</p>
     {% for product in products.all %}
     <img src="{{ product.image.url }}">
@@ -26,6 +26,7 @@
     </ul>
     {% endif %}
   </div>
+  <div class="bottomimg"><img src="{% static 'img/main-reverse.gif' %}" alt="main-img"></div>
 </div>
 
 {% endblock content %}
