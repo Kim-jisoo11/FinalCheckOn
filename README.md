@@ -21,7 +21,6 @@
 - 기능3 : 분석 결과 그래프로 시각화
 
 
-
 ***
 
 ## On-line Hackathon - LOTTE X LIKE LION 👩‍💻
@@ -46,75 +45,47 @@
 
 ## 프로젝트 소개
 ### 1. 프로젝트 기획 의도
-
+  대다수의 쇼핑몰은 구매 후 리뷰 서비스를 제외하고 사후 고객 관리 서비스가 이루어지지 않고 있다.
+  소비자가 구매한 카테고리를 분석해서 소비 유형을 결정해주는 체크온 서비스! 
+  차별화, 맞춤형, 친근함을 중점으로 젊은층을 겨냥해 즐거운 경험을 만들어준다.
+  
 ### 2. 주요 기능
 
 #### 2.1 메인 페이지  
+
 <img src="https://user-images.githubusercontent.com/46602793/97104800-f51e3f00-16f9-11eb-82b1-b87e9fa45b5f.gif">  
 
-
-
-
-#### 2.2 로그인 페이지
-
-
-<img alt="로그인페이지" src="https://user-images.githubusercontent.com/46602793/97105128-18e28480-16fc-11eb-8971-641b34f08b15.png" width="600">
-
-
-#### 2.3 쇼핑 페이지
-
-
+#### 2.2 쇼핑 페이지
 
 <img alt="쇼핑페이지" src="https://user-images.githubusercontent.com/46602793/97105127-17b15780-16fc-11eb-9930-f33b615a511f.png" width="600">
 
+#### 2.3 장바구니 페이지
 
-#### 2.4 장바구니 페이지
+<img alt="장바구니페이지" src="https://user-images.githubusercontent.com/59546983/97106747-c195e180-1706-11eb-9ffb-1953806b8726.png" width="600">
 
-설명
+#### 2.4 분석 페이지
 
+<img alt="분석페이지1" src="https://user-images.githubusercontent.com/59546983/97106829-25b8a580-1707-11eb-96ee-b716e93cae8d.png" width="600">
+<img alt="분석페이지2" src="https://user-images.githubusercontent.com/59546983/97106844-3f59ed00-1707-11eb-895d-188142f4e390.png" width="600">
 
+#### 2.5 랜덤박스
 
+<img alt="분석" src="https://user-images.githubusercontent.com/59546983/97106861-67e1e700-1707-11eb-9353-2b8d22b2731b.png" width="600">
   
-    def cart(request):
-      categories = Category.objects.all()
-      cart = Cart.objects.filter(user=request.user)
-      paginator = Paginator(cart, 10)
-      page = request.GET.get('page')
-      posts = paginator.get_page(page)
-      total_prices = 0
-      for i in cart:
-          i.products.price = i.products.price * i.quantity
-          total_prices = total_prices + i.products.price    
-      cart.totalAmount = total_prices
-
-    # 카테고리별 산 상품 종류 합계
-    isBought = {}
-    for i in cart:
-        if i.category_id in isBought:
-            sum = isBought.get(i.category_id) + 1
-            isBought[i.category_id] = sum
-        else:
-            isBought[i.category_id] = 1
-
-    # 구매 제품 종류 합계
-    totalSum=0
-    for key, value in isBought.items():
-        totalSum = totalSum + value
-    
-
-    # 카테고리 통계
-    countProduct = {}
-    context = {'cart': cart, 'categories': categories, 'posts' : posts, 'totalSum' : totalSum}
-    for i in cart:
-        countProduct[i.category_id] = isBought.get(i.category_id) / totalSum * 100
-
-    for key, value in countProduct.items():
-        context = {'cart': cart, 'categories': categories, 'posts' : posts, 'countProduct' : countProduct, 'totalSum' : totalSum}
-
-    return render(request, 'cart.html', context)
 
 
-### 3. 
+### 3. 기대 효과
+
+   * 소비 유형 분석 후 랜덤박스 이벤트로 초기 유입 유도 
+   * 분석 품목을 늘려 종합적인 소비성향 분석
+   * 챌린지 유행과 함께 롯데온 홍보 효과   
+   ----------------------------
+   * 첫 배포와 프로젝트를 잘해낸 팀원들의 자신감 상승으로 앞으로 더 좋은 결과가 있을 것으로 예상
+   * 구현이 안될 거 같은 어려운 기술에도 도전할 수 있는 용기가 생김
 
 
+### 4. 아쉬운 점 및 추후 개선 사항
 
+   * 분석 알고리즘을 촘촘하게 짜면 더 좋은 분석을 할 수 있을것.
+   * 롯데 마트(식료품)에 한정적임. 롯데 온으로 넓혀나간다면 다양한 분석 결과를 낼 수 있을 것임.
+   
