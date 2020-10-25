@@ -11,6 +11,8 @@
   <a href="http://sungshin2dx2-env.eba-zstah2bh.us-west-2.elasticbeanstalk.com">Website</a>
   ·
   <a href="https://drive.google.com/file/d/12Az8AXd3rVCsPXIXX2aOz5eQUxaYO-a9/view?usp=sharing">Documentation</a>
+  ·
+   <a href="https://www.youtube.com/watch?v=KJv2i10jawo&feature=youtu.be">Youtube</a>
 </p>  
    
    
