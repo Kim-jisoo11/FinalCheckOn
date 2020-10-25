@@ -57,14 +57,13 @@
 
 #### 2.2 로그인 페이지
 
-설명
 
 <img alt="로그인페이지" src="https://user-images.githubusercontent.com/46602793/97105128-18e28480-16fc-11eb-8971-641b34f08b15.png" width="600">
 
 
 #### 2.3 쇼핑 페이지
 
-설명
+
 
 <img alt="쇼핑페이지" src="https://user-images.githubusercontent.com/46602793/97105127-17b15780-16fc-11eb-9930-f33b615a511f.png" width="600">
 
