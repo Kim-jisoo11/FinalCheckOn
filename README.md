@@ -4,11 +4,13 @@
 <img src="https://user-images.githubusercontent.com/46602793/97069377-e3aa3980-160a-11eb-8766-684923dc14dc.png" width="15%" height="15%">
 <img src="https://user-images.githubusercontent.com/46602793/97069291-42bb7e80-160a-11eb-9536-85806bcda6a8.gif">
 </p>
-
+  
+  
+  
 <p align="center">
-  <a href="https://www.sungshin.ac.kr/sites/main_kor/main.jsp">Website</a>
+  <a href="http://sungshin2dx2-env.eba-zstah2bh.us-west-2.elasticbeanstalk.com">Website</a>
   ·
-  <a href="https://drive.google.com/file/d/1u6kN9E-QRZh2bl-Rcmqq59K7-ks2JAwc/view?usp=sharing">Documentation</a>
+  <a href="https://drive.google.com/file/d/12Az8AXd3rVCsPXIXX2aOz5eQUxaYO-a9/view?usp=sharing">Documentation</a>
 </p>  
    
    
